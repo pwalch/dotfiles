@@ -1,3 +1,5 @@
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
 export TERM="xterm-256color"
 
 export PATH="$HOME/.local/bin:$PATH"
@@ -18,19 +20,20 @@ function tmuxbuffer () {
   "$EDITOR" "$TMUX_BUFFER"
 }
 
-function dev-tmux () {
-  # Create a new tmux session with some windows opened at specific locations
-  # that I need frequently
-  local TMUX_SESSION_NAME="dev-tmux"
-  tmux new-session -d -s "$TMUX_SESSION_NAME" -n "firstwindow"
-  tmux new-window -t "${TMUX_SESSION_NAME}:" -n "todaydirs" -c "${TODAYDIRS}"
-  tmux new-window -t "${TMUX_SESSION_NAME}:" -n "my-frequent-dir-1" -c "${WORKSPACE_DIR}/frequent-dir-1"
-  tmux new-window -t "${TMUX_SESSION_NAME}:" -n "my-frequent-dir-2" -c "${WORKSPACE_DIR}/frequent-dir-2"
-  # Repeat at needed
-  tmux kill-window -t "${TMUX_SESSION_NAME}:firstwindow"
-  tmux select-window -t "${TMUX_SESSION_NAME}:todaydirs"
-  tmux attach-session -d
-}
+# De-comment and customize according to your most frequently used directories
+# function dev-tmux () {
+#   # Create a new tmux session with some windows opened at specific locations
+#   # that I need frequently
+#   local TMUX_SESSION_NAME="dev-tmux"
+#   tmux new-session -d -s "$TMUX_SESSION_NAME" -n "firstwindow"
+#   tmux new-window -t "${TMUX_SESSION_NAME}:" -n "todaydirs" -c "${TODAYDIRS}"
+#   tmux new-window -t "${TMUX_SESSION_NAME}:" -n "my-frequent-dir-1" -c "${WORKSPACE_DIR}/frequent-dir-1"
+#   tmux new-window -t "${TMUX_SESSION_NAME}:" -n "my-frequent-dir-2" -c "${WORKSPACE_DIR}/frequent-dir-2"
+#   # Repeat at needed
+#   tmux kill-window -t "${TMUX_SESSION_NAME}:firstwindow"
+#   tmux select-window -t "${TMUX_SESSION_NAME}:todaydirs"
+#   tmux attach-session -d
+# }
 
 # SSH into a machine without the host key check (avoid "someone is doing something nasty" error)
 alias sshinsecure="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
@@ -86,6 +89,11 @@ alias grep='grep --color=auto '
 alias cp='cp -i'
 alias mv='mv -i'
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    alias sed="gsed"
+    alias date="gdate"
+fi
+
 # Modern tools replace old ones
 alias cat="bat --paging never --plain"
 alias catp="bat"
@@ -105,12 +113,17 @@ alias vsc="code ."
 alias vscn="code --new-window"
 alias vscr="code --reuse-window"
 
-# the venv prompt would always be visible for global environments, so we disable it 
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-export PATH="$HOME/.standalone-venv/venv/bin:$PATH"
-export VIRTUAL_ENV="$HOME/.standalone-venv/venv"
+# global standalone-venv auto-activation
+export VIRTUAL_ENV_DISABLE_PROMPT=1  # no prompt prefix everywhere
+export PATH="${HOME}/.standalone-venv/venv/bin:${PATH}"
+export VIRTUAL_ENV="${HOME}/.standalone-venv/venv"
+export PIPX_HOME="${HOME}/.standalone-venv/pipx_home"
+export PIPX_BIN_DIR="${HOME}/.standalone-venv/pipx_bin"
+export PATH="${PIPX_BIN_DIR}:$PATH"
 
 eval $(thefuck --alias)
+# To fix 'git push' with a new branch
+export THEFUCK_PRIORITY="git_hook_bypass=1100"
 
 WORKSPACE_DIR="$HOME/workspace"
 alias wks="cd \"$WORKSPACE_DIR\""
