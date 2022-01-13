@@ -113,12 +113,12 @@ alias vsc="code ."
 alias vscn="code --new-window"
 alias vscr="code --reuse-window"
 
-# global standalone-venv auto-activation
+# global lonesnake auto-activation
 export VIRTUAL_ENV_DISABLE_PROMPT=1  # no prompt prefix everywhere
-export PATH="${HOME}/.standalone-venv/venv/bin:${PATH}"
-export VIRTUAL_ENV="${HOME}/.standalone-venv/venv"
-export PIPX_HOME="${HOME}/.standalone-venv/pipx_home"
-export PIPX_BIN_DIR="${HOME}/.standalone-venv/pipx_bin"
+export PATH="${HOME}/.lonesnake/venv/bin:${PATH}"
+export VIRTUAL_ENV="${HOME}/.lonesnake/venv"
+export PIPX_HOME="${HOME}/.lonesnake/pipx_home"
+export PIPX_BIN_DIR="${HOME}/.lonesnake/pipx_bin"
 export PATH="${PIPX_BIN_DIR}:$PATH"
 
 eval $(thefuck --alias)
