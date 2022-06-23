@@ -98,6 +98,8 @@ fi
 alias cat="bat --paging never --plain"
 alias catp="bat"
 
+alias rg="rg --sort-files"
+
 # If we need to unalias entries from common-aliases from Oh-My-ZSH
 # for COMMAND in l ll la; do unalias \$COMMAND; done
 alias ls='exa' # ls
@@ -121,6 +123,10 @@ export PIPX_HOME="${HOME}/.lonesnake/pipx_home"
 export PIPX_BIN_DIR="${HOME}/.lonesnake/pipx_bin"
 export PATH="${PIPX_BIN_DIR}:$PATH"
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 eval $(thefuck --alias)
 # To fix 'git push' with a new branch
 export THEFUCK_PRIORITY="git_hook_bypass=1100"
@@ -133,11 +139,10 @@ mkdir -p "$NOTES_DIR"
 alias notesdir="cd \"$NOTES_DIR\""
 alias todaynotes="$EDITOR "'${NOTES_DIR}/$(date +%Y%m%d)-notes.md'
 alias yesternotes="$EDITOR "'${NOTES_DIR}/$(date -d "yesterday" +%Y%m%d)-notes.md'
-alias weeknotes="$EDITOR "'${NOTES_DIR}/$(date -d "last Monday" +%Y%m%d)-notes-week.md'
+alias weeknotes="$EDITOR "'${NOTES_DIR}/$(date -d "next Monday - 7 days" +%Y%m%d)-notes-week.md'
+alias weeknoteslast="$EDITOR "'${NOTES_DIR}/$(date -d "next Monday - 14 days" +%Y%m%d)-notes-week.md'
 DAILY_DIRS="${WORKSPACE_DIR}/dailydirs"
 mkdir -p "$DAILY_DIRS"
 alias todaydir='mkdir -p "${DAILY_DIRS}/$(date +%Y%m%d)-dailydir/" && cd "${DAILY_DIRS}/$(date +%Y%m%d)-dailydir/"'
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+alias dwl='cd $HOME/Downloads'
