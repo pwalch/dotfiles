@@ -1,0 +1,71 @@
+[user]
+	name = Pierre Walch
+	email = pwalch@gmail.com
+
+[pull]
+	rebase = false
+
+[submodule]
+	recurse = true
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+[alias]
+    # Committing
+    ap = add .
+    cm = commit -m
+    cm-all-wip = !git add -A && git commit -m "WIP"
+    amend = commit --amend
+    unstage = reset HEAD
+    undo = reset HEAD~1
+    undo-hard = reset --hard HEAD~1
+    cp = cherry-pick
+
+    # Branches
+    s = status
+    f = fetch
+    pl = pull
+    co = checkout
+    cob = checkout -b
+    sync-master = !git checkout master && git pull --rebase
+
+    # History
+    rbm = rebase origin/master
+    rbi = rebase -i
+    rbni = rebase -i origin/main
+    rbn = rebase origin/main
+    rbi = rebase -i
+    rbmi = rebase -i origin/master
+    pushf = push --force-with-lease
+    rho = !git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
+
+    # Diffs
+    d = diff --patch-with-stat
+    dc = diff --cached
+    di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+
+    # Lists
+    tags = !git tag -l | cat
+    branches = !git branch -a | cat
+    latest-branches = !git branch -a --sort=-committerdate | head -n 20
+    remotes = !git remote -v | cat
+    latest = !sh -c 'git log origin/master --pretty=format:%H  --reverse | head -1'
+    unreleased = "!f() { git fetch --tags && git diff $(git tag | tail -n 1); }; f"
+    graph = log --graph --color --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
+    aliases=!git config -l | grep ^alias | cut -c 7- | sort
+
+    # Find
+    find-branches-by-commit = "!f() { git branch -a --contains $1; }; f"
+    find-tags-by-commit = "!f() { git describe --always --contains $1; }; f"
+    find-commits-by-source = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+    find-commits-by-message = "!f() { git log --pretty=format:'%C(yellow)%h %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+[init]
+	defaultBranch = master
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[interactive]
+	diffFilter = diff-so-fancy --patch
