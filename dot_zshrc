@@ -2,7 +2,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
-plugins=(zsh-autosuggestions zsh-syntax-highlighting copydir copyfile copybuffer you-should-use)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting copypath copyfile copybuffer you-should-use)
 
 source "$ZSH/oh-my-zsh.sh"
 
