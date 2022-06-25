@@ -9,15 +9,36 @@ export PAGER="bat"
 alias zshc="$EDITOR ~/.zshrc_custom.zsh"
 alias zshs="$EDITOR ~/.secrets.sh"
 
-function tmuxbuffer () {
-  # Open tmux buffer saved with PREFIX+S shortcut in text editor
-  local TMUX_BUFFER="/tmp/tmux-buffer.txt"
-  if [ ! -f "$TMUX_BUFFER" ]; then
-    echo "[ERROR] Could not find file: $TMUX_BUFFER"
-    return 1
-  fi
-  sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba' "$TMUX_BUFFER"
-  "$EDITOR" "$TMUX_BUFFER"
+function tm () {
+    edit_tmux_lines 10
+}
+
+function tmb () {
+    edit_tmux_lines 50
+}
+
+function tmbb () {
+    edit_tmux_lines 100
+}
+
+function edit_tmux_lines () {
+    if [[ "$#" -ne 1 ]]; then
+        echo "[ERROR] Invalid arguments, please pass the number of lines to tail."
+        return 1
+    fi
+
+    local tail_lines="$1"
+
+    local tmux_buffer_path="/tmp/tmux-buffer-micro.txt"
+    if ! tmux capture-pane -p > "$tmux_buffer_path"; then
+        echo "[ERROR] Could not save pane to: $tmux_buffer_path"
+        return 1
+    fi
+
+    local head_lines="$(($tail_lines - 1))"
+    sed '/^$/d' "$tmux_buffer_path" | \
+       tail -n "$tail_lines" | head -n "$head_lines" | \
+       micro
 }
 
 # De-comment and customize according to your most frequently used directories
