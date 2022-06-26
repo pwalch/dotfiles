@@ -20,6 +20,7 @@ Configure Mac settings:
 - `Battery > Power Adapter`: turn display off after 15 min on battery, after 1h for power adapter
 - `Trackpad > Scroll & Zoom` > uncheck `Scroll direction: Natural`
 - `Keyboard`: set `Key Repeat` to fastest and `Delay until Repeat` to shortest
+- `Shortcuts > Input Sources`: uncheck `Select the previous ...` and `Select the next ...`
 - `Dock & Menu Bar`: set a small size, set `Position on screen` to `right` and set `Automatically hide and show the Dock`
 - `Mission Control`: deactivate `ALT-DOWN` and `ALT-UP` by replacing them with `-`
 
@@ -28,6 +29,54 @@ Install Xcode command-line tools and Brew:
 - reboot
 - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 - close and re-open terminal
+
+### Kinesis Keyboard config
+
+- enter Power User Mode: `PROGM + SHIFT + ESC`
+- enable/disable virtual drive: `PROGM + F1`
+
+`state.txt`
+```
+startup_file=p_qwerty.txt
+key_click_tone=ON
+toggle_tone=ON
+macro_disable=OFF
+macro_speed=3
+status_play_speed=3
+power_user=true
+
+v_drive_open_on_startup=off
+```
+
+`p_qwerty.txt`
+```
+{=}>{speed8}{-lshift}{=}{+lshift}{space}
+{lshift}{=}>{speed8}{=}{space}
+{caps}>{speed8}{-lctrl}{z}{+lctrl}
+[lctrl]>[rctrl]
+[lalt]>[lalt]
+[ralt]>[rctrl]
+[rctrl]>[lalt]
+[delete]>[lwin]
+[end]>[delete]
+{home}>{speed8}{-lshift}{2}{+lshift}
+```
+
+Tips
+- on virtual keyboard, rctrl points to left CTRL key
+- in Kinesis config file, rctrl corresponds to the expected CTRL-RIGHT key
+- LeftOpt and RightOpt lead to the same key in virtual keyboard
+- known correspondances between physical keyboard and Kinesis key names
+  - STRG LEFT => `lctrl`
+  - ALT LEFT => `lalt`
+  - ALT GR => `ralt`
+  - STRG RIGHT => `rctrl`
+
+optional paging replacement
+```
+{pup}>{speed8}{up}{up}{up}{up}{up}{up}{up}{up}{up}{up}
+{pdown}>{speed8}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}
+```
 
 ### Terminal
 
@@ -62,7 +111,9 @@ brew install --cask google-chrome firefox \
 ```
 
 - Rectangle: start app and set up permissions, set shortcuts for left/right half, next/previous display and fullscreen, launch on login
-- Chrome: make default browser, disable form autofill and password management, install `uBlock Origin`, `HTTPS Everywhere` and `LastPass`
+- Chrome
+  - make default browser, disable form autofill and password management, install `uBlock Origin`, `HTTPS Everywhere` and `LastPass`
+  - in Mac `Preferences > Keyboard > App Shortcuts`, set `Select previous tab` to `CMD-UP` `Select next tab` to `CMD-DOWN`
 - Flycut: start app and set up permissions, set shortcut to CMD + SHIFT + K, launch on login (https://github.com/TermiT/Flycut/issues/206)
 - Flameshot: start app and try to make a screenshot to trigger permissions request
 - Thunderbird: set up email accounts
@@ -89,6 +140,7 @@ VS Code:
   - TODO Highlight
 - set settings in VSCode UI
 
+settings.json
 ```json
 {
     "editor.minimap.enabled": false,
@@ -103,13 +155,66 @@ VS Code:
 }
 ```
 
+`keybindings.json`
+```json
+[
+    {
+        "key": "ctrl+j",
+        "command": "-editor.action.joinLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+up",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "ctrl+alt+cmd+8",
+        "command": "-workbench.action.previousEditor"
+    },
+    {
+        "key": "cmd+down",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+alt+cmd+9",
+        "command": "-workbench.action.nextEditor"
+    },
+    {
+        "key": "cmd+m",
+        "command": "workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "space",
+        "command": "explorer.openAndPassFocus",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
+    },
+    {
+        "key": "cmd+down",
+        "command": "-explorer.openAndPassFocus",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
+    },
+    {
+        "key": "cmd+[Backslash]",  // this is actually '#', not backslash
+        "command": "workbench.action.splitEditorToRightGroup"
+    }
+]
+```
+
+Points of interest
+- `workbench.action.previousEditor`
+- `workbench.action.nextEditor`
+- `viewContainer.workbench.view.explorer.enabled`
+- `explorer.openAndPassFocus`
+- `workbench.action.splitEditorRight`
+
 ### Terminal applications
 
 ```bash
 brew install \
     openssl readline sqlite3 xz zlib \
     micro bat sd the_silver_searcher \
-    fd exa tree broot ranger fzf zoxide \
+    fd exa tree broot ranger highlight fzf zoxide \
     direnv git-lfs diff-so-fancy lazygit gitui shellcheck mosh \
     nvm lonesnake \
     coreutils procs dust ctop lazydocker viddy \
@@ -125,6 +230,14 @@ brew install \
     "Ctrl-d": "Delete",
     "tabstospaces": true
 }
+```
+
+`micro ~/.config/ranger/rc.conf`
+```
+copymap <UP>       k
+copymap <DOWN>     l
+copymap <LEFT>     j
+copymap <RIGHT>    é
 ```
 
 Node
