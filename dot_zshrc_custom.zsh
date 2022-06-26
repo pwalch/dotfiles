@@ -95,6 +95,8 @@ function br {
     eval "$d"
 }
 
+alias rr="ranger"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Generated for envman. Do not edit.
