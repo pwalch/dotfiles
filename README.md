@@ -119,11 +119,14 @@ brew install --cask google-chrome firefox \
 - Chrome
   - make default browser, disable form autofill and password management, install `uBlock Origin`, `HTTPS Everywhere` and `LastPass`
   - in Mac `Preferences > Keyboard > App Shortcuts`, set `Select previous tab` to `CMD-UP` `Select next tab` to `CMD-DOWN`
+  - start a meeting on Google Meet and try to get audio, video and share screen, which will trigger permissions request and require restarting the app 
 - Flycut: start app and set up permissions, set shortcut to CMD + SHIFT + K, launch on login (https://github.com/TermiT/Flycut/issues/206)
 - Flameshot: start app and try to make a screenshot to trigger permissions request
 - Thunderbird: set up email accounts
   - Gmail: `imap.gmail.com:993`, `smtp.gmail.com:993` with email address as user name and application password as password
-- Zoom: start app and try to get audio, video and share screen, which will trigger permissions request and require restarting the app
+- Zoom
+  - start app and try to get audio, video and share screen, which will trigger permissions request and require restarting the app
+  - disable audio and video when starting a meeting
 - PyCharm: start app and set it up
 - GIMP: start app as it takes longer the first time
 
@@ -216,6 +219,7 @@ Points of interest
 ### Terminal applications
 
 ```bash
+brew tap pwalch/lonesnake
 brew install \
     openssl readline sqlite3 xz zlib \
     micro bat sd the_silver_searcher \
