@@ -2,23 +2,24 @@
 	name = Pierre Walch
 	email = pwalch@gmail.com
 
+[init]
+    defaultBranch = master
 [pull]
-	rebase = false
-
+    rebase = false
 [submodule]
-	recurse = true
+    recurse = true
 
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+# Integration with diff-so-fancy
+[core]
+    pager = diff-so-fancy | less --tabs=4 -RFX
+[interactive]
+    diffFilter = diff-so-fancy --patch
 
 [alias]
     # Committing
     ap = add .
     cm = commit -m
-    cm-all-wip = !git add -A && git commit -m "WIP"
+    cmwip = !git add -A && git commit -m "WIP"
     amend = commit --amend
     unstage = reset HEAD
     undo = reset HEAD~1
@@ -34,12 +35,11 @@
     sync-master = !git checkout master && git pull --rebase
 
     # History
+    rbi = rebase -i
     rbm = rebase origin/master
-    rbi = rebase -i
-    rbni = rebase -i origin/main
-    rbn = rebase origin/main
-    rbi = rebase -i
     rbmi = rebase -i origin/master
+    rbn = rebase origin/main
+    rbni = rebase -i origin/main
     pushf = push --force-with-lease
     rho = !git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
 
@@ -63,9 +63,4 @@
     find-tags-by-commit = "!f() { git describe --always --contains $1; }; f"
     find-commits-by-source = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
     find-commits-by-message = "!f() { git log --pretty=format:'%C(yellow)%h %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
-[init]
-	defaultBranch = master
-[core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
-[interactive]
-	diffFilter = diff-so-fancy --patch
+    
