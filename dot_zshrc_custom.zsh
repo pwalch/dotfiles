@@ -139,9 +139,7 @@ alias vscn="code --new-window"
 alias vscr="code --reuse-window"
 
 # global lonesnake auto-activation
-export VIRTUAL_ENV_DISABLE_PROMPT=1  # no prompt prefix everywhere
 export PATH="${HOME}/.lonesnake/venv/bin:${PATH}"
-export VIRTUAL_ENV="${HOME}/.lonesnake/venv"
 export PIPX_HOME="${HOME}/.lonesnake/pipx_home"
 export PIPX_BIN_DIR="${HOME}/.lonesnake/pipx_bin"
 export PATH="${PIPX_BIN_DIR}:$PATH"
