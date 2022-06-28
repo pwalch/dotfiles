@@ -22,6 +22,7 @@ Configure Mac settings:
 - `Keyboard`: set `Key Repeat` to fastest and `Delay until Repeat` to shortest
 - `Shortcuts > Input Sources`: uncheck `Select the previous ...` and `Select the next ...`
 - `Dock & Menu Bar`: set a small size, set `Position on screen` to `right` and set `Automatically hide and show the Dock`
+- `Dock & Menu Bar > Battery`: show percentage
 - `Mission Control`: deactivate `ALT-DOWN` and `ALT-UP` by replacing them with `-`
 
 Install Xcode command-line tools and Brew:
@@ -84,9 +85,13 @@ optional paging replacement
 - `brew install zsh-completions tmux`
 - install tmux Powerline font: [GitHub link](https://github.com/powerline/fonts/blob/master/FiraMono/FuraMono-Regular%20Powerline.otf)
 - `Preferences > Profiles > Text` and select `Fira Mono for Powerline`
+- `Preferences > Profiles > Keys` and do `Load Preset...` then `Natural Text Editing`
 - `Preferences > General > Selection`: check `Applications in terminal may access keyboard`
 - install oh-my-zsh
   - `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+  - potential nice theme
+    - `curl -sL https://raw.githubusercontent.com/moarram/headline/main/headline.zsh-theme -o ~/.oh-my-zsh/themes/headline.zsh-theme
+  ZSH_THEME="headline"`
 - close and re-open terminal
 - install some oh-my-zsh extensions
   - `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
@@ -221,14 +226,20 @@ brew install \
     ffmpeg ipmitool docker-credential-helper-ecr
 ```
 
-`micro ~/.config/micro/settings.json`:
+`micro ~/.config/micro/settings.json`
 
+```json
+{
+    "tabstospaces": true
+}
+```
+
+`micro ~/.config/micro/keybindings.json` (Ctrl-d solves the issue with backspace duplicating the line)
 ```json
 {
     "Alt-/": "lua:comment.comment",
     "CtrlUnderscore": "lua:comment.comment",
     "Ctrl-d": "Delete",
-    "tabstospaces": true
 }
 ```
 
