@@ -124,6 +124,7 @@ brew install --cask google-chrome firefox \
 - Flameshot: start app and try to make a screenshot to trigger permissions request
 - Thunderbird: set up email accounts
   - Gmail: `imap.gmail.com:993`, `smtp.gmail.com:993` with email address as user name and application password as password
+  - in account settings in `Copies & Folders`, check `Bcc these email addresses` with the email address of the account so all sent messages go to the inbox
 - Zoom
   - start app and try to get audio, video and share screen, which will trigger permissions request and require restarting the app
   - disable audio and video when starting a meeting
