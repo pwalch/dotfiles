@@ -5,6 +5,10 @@ ZSH_THEME="robbyrussell"
 plugins=(zsh-autosuggestions zsh-syntax-highlighting copypath copyfile copybuffer you-should-use)
 
 source "$ZSH/oh-my-zsh.sh"
+# Overwriting robbyrussel's theme so it has newlines
+PROMPT_NEWLINE=$'\n'
+PROMPT='${PROMPT_NEWLINE}%{$fg_bold[cyan]%}[%c]%{$reset_color%} $(git_prompt_info)'
+PROMPT+="${PROMPT_NEWLINE}%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$reset_color%}"
 
 source "$HOME/.zshrc_custom.zsh"
 
