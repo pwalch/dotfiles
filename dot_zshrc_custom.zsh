@@ -2,6 +2,11 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export TERM="xterm-256color"
 
+# Overwriting robbyrussel's theme so it has newlines
+PROMPT_NEWLINE=$'\n'
+PROMPT='${PROMPT_NEWLINE}%{$fg_bold[cyan]%}---- %c%{$reset_color%} $(git_prompt_info)'
+PROMPT+="${PROMPT_NEWLINE}%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$reset_color%}"
+
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="micro"
 export PAGER="bat"
