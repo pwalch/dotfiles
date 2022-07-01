@@ -8,6 +8,12 @@ source "$ZSH/oh-my-zsh.sh"
 
 source "$HOME/.zshrc_custom.zsh"
 
-# If you have secrets, store them in this file and
-# uncomment the line
-# source "$HOME/.secrets.sh"
+if [[ -f "$HOME/.secrets.sh" ]]; then
+  # File for secret values
+  source "$HOME/.secrets.sh"
+fi
+
+if [[ -f "$HOME/.zshrc_specific.zsh" ]]; then
+  # File for machine-specific configs
+  source "$HOME/.zshrc_specific.zsh"
+fi
