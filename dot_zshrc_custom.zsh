@@ -2,6 +2,9 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export TERM="xterm-256color"
 
+# Disable autocomplete on scp, as it is always slow
+zstyle ':completion:*' remote-access no
+
 # Overwriting robbyrussel's theme so it has newlines
 PROMPT_NEWLINE=$'\n'
 PROMPT='${PROMPT_NEWLINE}%{$fg_bold[cyan]%}---- %c%{$reset_color%} $(git_prompt_info)'
