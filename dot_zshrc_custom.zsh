@@ -6,6 +6,11 @@ export TERM="xterm-256color"
 PROMPT_NEWLINE=$'\n'
 PROMPT='${PROMPT_NEWLINE}%{$fg_bold[cyan]%}---- %c%{$reset_color%} $(git_prompt_info)'
 PROMPT+="${PROMPT_NEWLINE}%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$reset_color%}"
+if [[ "$OSTYPE" == 'darwin'* ]]; then
+  # There is little space by default after the arrow without
+  # this on macOS.
+  PROMPT+=' '
+fi
 
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="micro"
