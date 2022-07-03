@@ -223,7 +223,7 @@ Points of interest
 brew tap pwalch/lonesnake
 brew install \
     openssl readline sqlite3 xz zlib \
-    micro bat sd the_silver_searcher \
+    micro bat sd the_silver_searcher ripgrep up \
     fd exa tree broot ranger highlight fzf zoxide \
     direnv git-lfs diff-so-fancy lazygit gitui shellcheck mosh \
     nvm lonesnake \
