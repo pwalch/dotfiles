@@ -120,8 +120,8 @@ brew install --cask google-chrome firefox \
 - Rectangle: start app and set up permissions, set shortcuts for left/right half, next/previous display and fullscreen, launch on login
 - Chrome
   - make default browser, disable form autofill and password management, install `uBlock Origin`, `HTTPS Everywhere` and `LastPass`
-  - in Mac `Preferences > Keyboard > App Shortcuts`, set `Select previous tab` to `CMD-UP` `Select next tab` to `CMD-DOWN`
-  - start a meeting on Google Meet and try to get audio, video and share screen, which will trigger permissions request and require restarting the app 
+  - in Mac `Preferences > Keyboard > App Shortcuts`, set `Select Previous Tab` to `CMD-UP` `Select Next Tab` to `CMD-DOWN`
+  - start a meeting on Google Meet and try to get audio, video and share screen, which will trigger permissions request and require restarting the app
 - Flycut: start app and set up permissions, set shortcut to CMD + SHIFT + K, launch on login (https://github.com/TermiT/Flycut/issues/206), bump to top of stack
 - Flameshot: start app and try to make a screenshot to trigger permissions request
 - Thunderbird: set up email accounts
