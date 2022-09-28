@@ -157,6 +157,29 @@ export PIPX_HOME="${HOME}/.lonesnake/pipx_home"
 export PIPX_BIN_DIR="${HOME}/.lonesnake/pipx_bin"
 export PATH="${PIPX_BIN_DIR}:$PATH"
 
+# Print activation exports for lonesnake
+# Usage: lonesnake-print-activation >> .envrc
+function lonesnake-print-activation() {
+  local interpreter_dir_rel=".lonesnake/interpreter"
+  if [[ ! -d "$interpreter_dir_rel" ]]; then
+    echo "[ERROR] Could not find interpreter directory at" \
+        "'${interpreter_dir_rel}'. Is there a lonesnake environment?" >&2
+    return 1
+  fi
+  local include_dir=$(find "${interpreter_dir_rel}/include" -name "python*" -type d)
+  local include_dir_name=$(basename "${include_dir}")
+
+cat << EOM
+# lonesnake auto-activation for the project directory
+PATH_add "\${PWD}/.lonesnake/venv/bin"
+export VIRTUAL_ENV="\${PWD}/.lonesnake/venv"
+
+# Solve errors involving "Python.h not found" when building
+# Python extensions with a lonesnake environment.
+path_add CPATH "\${PWD}/${interpreter_dir_rel}/include/${include_dir_name}"
+EOM
+}
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
