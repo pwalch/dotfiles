@@ -69,6 +69,8 @@ function edit_tmux_lines () {
 #   tmux attach-session -d
 # }
 
+alias dev-tmux-restart='tmux kill-server; dev-tmux'
+
 # SSH into a machine without the host key check (avoid "someone is doing something nasty" error)
 alias sshinsecure="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 # Copy my public key to clipboard to share it quickly
