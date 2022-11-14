@@ -155,30 +155,33 @@ alias vscr="code --reuse-window"
 
 # global lonesnake auto-activation
 export PATH="${HOME}/.lonesnake/venv/bin:${PATH}"
+
+# By default, pipx stores its files in "~/.local/pipx" and "~/.local/bin", but we
+# configure it to use sub-directories of the standalone environment:
+# "~/.lonesnake/pipx_bin" and "~/.lonesnake/pipx_home". Thanks to this,
+# we keep everything related to the global environment in the same place.
 export PIPX_HOME="${HOME}/.lonesnake/pipx_home"
 export PIPX_BIN_DIR="${HOME}/.lonesnake/pipx_bin"
-export PATH="${PIPX_BIN_DIR}:$PATH"
+export PATH="${PIPX_BIN_DIR}:${PATH}"
 
-# Print activation exports for lonesnake
+# Print direnv activation instructions for lonesnake
 # Usage: lonesnake-print-activation >> .envrc
 function lonesnake-print-activation() {
-  local interpreter_dir_rel=".lonesnake/interpreter"
-  if [[ ! -d "$interpreter_dir_rel" ]]; then
-    echo "[ERROR] Could not find interpreter directory at" \
-        "'${interpreter_dir_rel}'. Is there a lonesnake environment?" >&2
-    return 1
-  fi
-  local include_dir=$(find "${interpreter_dir_rel}/include" -name "python*" -type d)
-  local include_dir_name=$(basename "${include_dir}")
-
 cat << EOM
 # lonesnake auto-activation for the project directory
-PATH_add "\${PWD}/.lonesnake/venv/bin"
-export VIRTUAL_ENV="\${PWD}/.lonesnake/venv"
+lonesnake_dir="\${PWD}/.lonesnake"
+PATH_add "\${lonesnake_dir}/venv/bin"
+export VIRTUAL_ENV="\${lonesnake_dir}/venv"
 
 # Solve errors involving "Python.h not found" when building
 # Python extensions with a lonesnake environment.
-path_add CPATH "\${PWD}/${interpreter_dir_rel}/include/${include_dir_name}"
+parent_include_dir="\${lonesnake_dir}/interpreter/usr/local/include"
+if [[ -d "\$parent_include_dir" ]]; then
+  include_dir_name=\$(find "\$parent_include_dir" \
+    -mindepth 1 -maxdepth 1 -type d -name "python3.*" \
+    -exec basename {} \;)
+  path_add CPATH "\${parent_include_dir}/\${include_dir_name}"
+fi
 EOM
 }
 
