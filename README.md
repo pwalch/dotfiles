@@ -26,6 +26,7 @@ Configure Mac settings:
 - `Dock & Menu Bar`: set a small size, set `Position on screen` to `right` and set `Automatically hide and show the Dock`
 - `Dock & Menu Bar > Battery`: show percentage
 - `Mission Control`: deactivate `ALT-DOWN` and `ALT-UP` by replacing them with `-`
+- `Screenshot` app: go to `Options > Save to` and select `Other location`, then create folder in `~/workspace` called `screenshots` and put it there
 
 Install Xcode command-line tools and Brew:
 - `xcode-select --install`
