@@ -196,13 +196,6 @@ export THEFUCK_PRIORITY="git_hook_bypass=1100"
 WORKSPACE_DIR="$HOME/workspace"
 alias wks="cd \"$WORKSPACE_DIR\""
 mkdir -p "$WORKSPACE_DIR"
-NOTES_DIR="${WORKSPACE_DIR}/dailynotes"
-mkdir -p "$NOTES_DIR"
-alias notesdir="cd \"$NOTES_DIR\""
-alias todaynotes="$EDITOR "'${NOTES_DIR}/$(date +%Y%m%d)-notes.md'
-alias yesternotes="$EDITOR "'${NOTES_DIR}/$(date -d "yesterday" +%Y%m%d)-notes.md'
-alias weeknotes="$EDITOR "'${NOTES_DIR}/$(date -d "next Monday - 7 days" +%Y%m%d)-notes-week.md'
-alias weeknoteslast="$EDITOR "'${NOTES_DIR}/$(date -d "next Monday - 14 days" +%Y%m%d)-notes-week.md'
 DAILY_DIRS="${WORKSPACE_DIR}/dailydirs"
 mkdir -p "$DAILY_DIRS"
 alias todaydir='mkdir -p "${DAILY_DIRS}/$(date +%Y%m%d)-dailydir/" && cd "${DAILY_DIRS}/$(date +%Y%m%d)-dailydir/"'
