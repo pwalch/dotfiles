@@ -165,7 +165,8 @@ settings.json
     "workbench.editor.enablePreview": false,
     "workbench.iconTheme": "vscode-icons",
     "terminal.integrated.enablePersistentSessions": false,
-    "terminal.integrated.persistentSessionReviveProcess": "never"
+    "terminal.integrated.persistentSessionReviveProcess": "never",
+    "python.formatting.provider": "black"
 }
 ```
 
