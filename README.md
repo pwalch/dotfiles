@@ -163,7 +163,9 @@ settings.json
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.sendKeybindingsToShell": true,
     "workbench.editor.enablePreview": false,
-    "workbench.iconTheme": "vscode-icons"
+    "workbench.iconTheme": "vscode-icons",
+    "terminal.integrated.enablePersistentSessions": false,
+    "terminal.integrated.persistentSessionReviveProcess": "never"
 }
 ```
 
