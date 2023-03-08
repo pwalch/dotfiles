@@ -19,6 +19,7 @@ Configure Mac settings:
 - General: set `Show scroll bars` to `Always`
 - `Battery > Power Adapter`: turn display off after 15 min on battery, after 1h for power adapter
 - `Trackpad > Scroll & Zoom` > uncheck `Scroll direction: Natural`
+- `Keyboard > Text Input > Edit...` then disable "Use smart quotes and dashes"
 - `Keyboard`: set `Key Repeat` to fastest and `Delay until Repeat` to shortest
 - `Keyboard` > `Shortcuts`
   - `Input Sources`: uncheck `Select the previous ...` and `Select the next ...`
