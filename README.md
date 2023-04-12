@@ -1,19 +1,18 @@
 # dotfiles
 
-This repo contains my dotfiles and is managed by [chezmoi](https://github.com/twpayne/chezmoi).
+Here are instructions to reproduce my development environment on macOS, along with all my dotfiles.
 
-```bash
-sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply pwalch
-```
+Check out the companion blog post: [Your dev environment is your ideal supermarket](https://pwal.ch/posts/2021-12-27-dev-env-dotfiles/).
 
 ## Installation instructions for Mac
 
 ### Foundation
 
-After the first boot, perform all the possible OS updates
-- major macOS upgrades in `App Store`
-- minor upgrades in `Software Updates`
-- reboot
+After the first boot, perform all the possible OS updates:
+- install major and minor upgrades in System Preferences > Software Updates, then reboot and check again until there are no more updates
+- in terminal, install XCode command line tools: `xcode-select --install`
+- check again System Preferences > Software Updates and install updates if available, then reboot again. Repeat until there are no more updates.
+- System Preferences > Security and Privacy > FileVault: click "Turn On FileVault" then set a recovery key and save it in password manager
 
 Configure Mac settings:
 - General: set `Show scroll bars` to `Always`
@@ -25,15 +24,141 @@ Configure Mac settings:
   - `Input Sources`: uncheck `Select the previous ...` and `Select the next ...`
   - `Keyboard` > `Move focus to active or next window`: press `CMD + <`
 - `Dock & Menu Bar`: set a small size, set `Position on screen` to `right` and set `Automatically hide and show the Dock`
+- remove all optional icons from Dock
 - `Dock & Menu Bar > Battery`: show percentage
 - `Mission Control`: deactivate `ALT-DOWN` and `ALT-UP` by replacing them with `-`
 - `Screenshot` app: go to `Options > Save to` and select `Other location`, then create folder in `~/workspace` called `screenshots` and put it there
 
-Install Xcode command-line tools and Brew:
-- `xcode-select --install`
-- reboot
+### Terminal
+
+Install Brew:
 - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+- close and re-open Terminal
+
+- `brew install --cask iterm2`
+- close Terminal app and open iTerm app
+- Security & Privacy > Privacy > Full Disk Access > add iTerm
+- generate SSH key
+  - `ssh-keygen -t ed25519 -C "$(date "+%Y%m%d")-DEVICE-NAME"`
+- `brew install zsh-completions tmux`
+- install tmux Powerline font: [GitHub link](https://github.com/powerline/fonts/blob/master/FiraMono/FuraMono-Regular%20Powerline.otf)
+- `Preferences > Profiles > Text` and select `Fira Mono for Powerline`
+- `Preferences > Profiles > Keys` and do `Load Preset...` then `Natural Text Editing`
+- `Preferences > General > Selection`: check `Applications in terminal may access keyboard`
+- install oh-my-zsh
+  - `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+  - potential nice theme
+    - `curl -sL https://raw.githubusercontent.com/moarram/headline/main/headline.zsh-theme -o ~/.oh-my-zsh/themes/headline.zsh-theme
+  ZSH_THEME="headline"`
 - close and re-open terminal
+- install some oh-my-zsh extensions
+  - `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
+  - `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
+  - `git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use`
+- close and re-open terminal
+- `cd ~`
+- install Tmux and gpakosz
+  - `git clone https://github.com/gpakosz/.tmux.git`
+  - `ln -s -f .tmux/.tmux.conf`
+- apply `chezmoi`
+  - `sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply pwalch`
+
+### GUI applications
+
+Install all Brew Cask applications and start each of them for the first time:
+```bash
+brew install --cask google-chrome firefox \
+    rectangle flycut flameshot \
+    visual-studio-code pycharm-ce docker \
+    thunderbird obsidian vlc gimp zoom libreoffice \
+    tailscale
+```
+
+- Rectangle: start app and set up permissions, set shortcuts for left/right half, next/previous display and fullscreen, launch on login
+- Chrome
+  - make default browser, disable form autofill and password management, install `uBlock Origin` and `1Password`
+  - `Settings > Privacy and security > Security > Scroll to bottom`: toggle “Always use secure connections”
+  - in Mac `Preferences > Keyboard > App Shortcuts`, set `Select Previous Tab` to `CMD-UP` `Select Next Tab` to `CMD-DOWN`, `Move Tab to New Window` to `CMD-D`
+  - start a meeting on Google Meet and try to get audio, video and share screen, which will trigger permissions request and require restarting the app
+- Flycut: start app and set up permissions, set shortcut to CMD + SHIFT + K, launch on login (https://github.com/TermiT/Flycut/issues/206), check `Move pasted item to top of stack`, `Security and Privacy > Privacy > Accessibility` add Flycut
+- Flameshot: start app and try to make a screenshot to trigger permissions request
+- Thunderbird: set up email accounts
+  - Gmail: `imap.gmail.com:993`, `smtp.gmail.com:993` with email address as user name and application password as password
+  - in account settings in `Copies & Folders`, check `Bcc these email addresses` with the email address of the account so all sent messages go to the inbox
+- Zoom
+  - start app and try to get audio, video and share screen, which will trigger permissions request and require restarting the app
+  - disable audio and video when starting a meeting
+- PyCharm: start app and set it up
+- GIMP: start app as it takes longer the first time
+
+VS Code:
+- `Security & Privacy > Privacy > Full Disk Access` > add VS Code
+- import profile from `pwalch.code-profile` in the repo
+
+Notes about profile:
+- `"key": "cmd+[Backslash]"` is actually '#', not backslash
+- various points of interest
+  - `workbench.action.previousEditor`
+  - `workbench.action.nextEditor`
+  - `viewContainer.workbench.view.explorer.enabled`
+  - `explorer.openAndPassFocus`
+  - `workbench.action.splitEditorRight`
+
+### Terminal applications
+
+```bash
+brew tap pwalch/lonesnake
+brew install \
+    micro bat sd the_silver_searcher ripgrep up \
+    fd exa tree broot ranger highlight fzf zoxide \
+    direnv git-lfs diff-so-fancy lazygit gitui shellcheck mosh \
+    nvm lonesnake \
+    coreutils procs dust ctop lazydocker viddy \
+    wget cowsay ffmpeg ipmitool docker-credential-helper-ecr
+```
+
+`micro ~/.config/micro/settings.json`
+
+```json
+{
+    "tabstospaces": true
+}
+```
+
+`micro ~/.config/micro/keybindings.json` (Ctrl-d solves the issue with backspace duplicating the line)
+```json
+{
+    "Alt-/": "lua:comment.comment",
+    "CtrlUnderscore": "lua:comment.comment",
+    "Ctrl-d": "Delete",
+}
+```
+
+`micro ~/.config/ranger/rc.conf`
+```
+copymap <UP>       k
+copymap <DOWN>     l
+copymap <LEFT>     j
+copymap <RIGHT>    é
+```
+
+Node
+- `nvm install 18`
+
+Python
+- `cd ~`
+- `lonesnake`
+- close and re-open terminal
+- check that `which python` points to `~/.lonesnake/venv/bin` (this should be done by zshrc_custom)
+- `pip install pipx`
+- `for PACKAGE in thefuck httpie magic-wormhole black isort flake8; do pipx install "$PACKAGE"; done`
+
+AWS
+- install AWSCLI with [tutorial](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+- `aws configure` and enter default keys
+- `mkdir -p ~/.docker && echo '{"credsStore": "ecr-login"}' > ~/.docker/config.json`
+- workaround for [Docker for Mac issue](https://github.com/docker/for-mac/issues/6295)
+  - `alias docker-configure-ecr="mkdir -p ~/.docker && echo '{\"credsStore\": \"ecr-login\"}' > ~/.docker/config.json"`
 
 ### Kinesis Keyboard config
 
@@ -82,201 +207,3 @@ optional paging replacement
 {pup}>{speed8}{up}{up}{up}{up}{up}{up}{up}{up}{up}{up}
 {pdown}>{speed8}{down}{down}{down}{down}{down}{down}{down}{down}{down}{down}
 ```
-
-### Terminal
-
-- `brew install --cask iterm2`
-- `brew install zsh-completions tmux`
-- install tmux Powerline font: [GitHub link](https://github.com/powerline/fonts/blob/master/FiraMono/FuraMono-Regular%20Powerline.otf)
-- `Preferences > Profiles > Text` and select `Fira Mono for Powerline`
-- `Preferences > Profiles > Keys` and do `Load Preset...` then `Natural Text Editing`
-- `Preferences > General > Selection`: check `Applications in terminal may access keyboard`
-- install oh-my-zsh
-  - `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
-  - potential nice theme
-    - `curl -sL https://raw.githubusercontent.com/moarram/headline/main/headline.zsh-theme -o ~/.oh-my-zsh/themes/headline.zsh-theme
-  ZSH_THEME="headline"`
-- close and re-open terminal
-- install some oh-my-zsh extensions
-  - `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
-  - `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
-  - `git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use`
-- close and re-open terminal
-- `cd ~`
-- install Tmux and gpakosz
-  - `git clone https://github.com/gpakosz/.tmux.git`
-  - `ln -s -f .tmux/.tmux.conf`
-- apply `chezmoi`
-  - `sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply pwalch`
-
-### GUI applications
-
-```bash
-brew install --cask google-chrome firefox \
-    rectangle flycut flameshot \
-    visual-studio-code pycharm-ce docker \
-    thunderbird obsidian vlc gimp zoom libreoffice \
-    tailscale
-```
-
-- Rectangle: start app and set up permissions, set shortcuts for left/right half, next/previous display and fullscreen, launch on login
-- Chrome
-  - make default browser, disable form autofill and password management, install `uBlock Origin`, `HTTPS Everywhere` and `LastPass`
-  - in Mac `Preferences > Keyboard > App Shortcuts`, set `Select Previous Tab` to `CMD-UP` `Select Next Tab` to `CMD-DOWN`, `Move Tab to New Window` to `CMD-D`
-  - start a meeting on Google Meet and try to get audio, video and share screen, which will trigger permissions request and require restarting the app
-- Flycut: start app and set up permissions, set shortcut to CMD + SHIFT + K, launch on login (https://github.com/TermiT/Flycut/issues/206), bump to top of stack
-- Flameshot: start app and try to make a screenshot to trigger permissions request
-- Thunderbird: set up email accounts
-  - Gmail: `imap.gmail.com:993`, `smtp.gmail.com:993` with email address as user name and application password as password
-  - in account settings in `Copies & Folders`, check `Bcc these email addresses` with the email address of the account so all sent messages go to the inbox
-- Zoom
-  - start app and try to get audio, video and share screen, which will trigger permissions request and require restarting the app
-  - disable audio and video when starting a meeting
-- PyCharm: start app and set it up
-- GIMP: start app as it takes longer the first time
-
-VS Code:
-- install extensions
-  - GitLens
-  - Permute Lines
-  - GoLang
-  - HashiCorp Terraform
-  - VSCode Docker + Remote SSH + Remote Containers
-  - Python (already integrated normally)
-  - indent rainbow
-  - RedHat Ansible
-  - RedHat YAML
-  - Even Better TOML
-  - cmake
-  - Error Lens
-  - VSCode Icons
-  - TODO Highlight
-- set settings in VSCode UI
-
-settings.json
-```json
-{
-    "editor.minimap.enabled": false,
-    "editor.rulers": [89],
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    "telemetry.telemetryLevel": "off",
-    "terminal.integrated.sendKeybindingsToShell": true,
-    "workbench.editor.enablePreview": false,
-    "workbench.iconTheme": "vscode-icons",
-    "terminal.integrated.enablePersistentSessions": false,
-    "terminal.integrated.persistentSessionReviveProcess": "never",
-    "python.formatting.provider": "black"
-}
-```
-
-`keybindings.json`
-```json
-[
-    {
-        "key": "ctrl+j",
-        "command": "-editor.action.joinLines",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "cmd+up",
-        "command": "workbench.action.previousEditor"
-    },
-    {
-        "key": "ctrl+alt+cmd+8",
-        "command": "-workbench.action.previousEditor"
-    },
-    {
-        "key": "cmd+down",
-        "command": "workbench.action.nextEditor"
-    },
-    {
-        "key": "ctrl+alt+cmd+9",
-        "command": "-workbench.action.nextEditor"
-    },
-    {
-        "key": "cmd+m",
-        "command": "workbench.view.explorer",
-        "when": "viewContainer.workbench.view.explorer.enabled"
-    },
-    {
-        "key": "space",
-        "command": "explorer.openAndPassFocus",
-        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
-    },
-    {
-        "key": "cmd+down",
-        "command": "-explorer.openAndPassFocus",
-        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
-    },
-    {
-        "key": "cmd+[Backslash]",  // this is actually '#', not backslash
-        "command": "workbench.action.splitEditorToRightGroup"
-    }
-]
-```
-
-Points of interest
-- `workbench.action.previousEditor`
-- `workbench.action.nextEditor`
-- `viewContainer.workbench.view.explorer.enabled`
-- `explorer.openAndPassFocus`
-- `workbench.action.splitEditorRight`
-
-### Terminal applications
-
-```bash
-brew tap pwalch/lonesnake
-brew install \
-    openssl readline sqlite3 xz zlib \
-    micro bat sd the_silver_searcher ripgrep up \
-    fd exa tree broot ranger highlight fzf zoxide \
-    direnv git-lfs diff-so-fancy lazygit gitui shellcheck mosh \
-    nvm lonesnake \
-    coreutils procs dust ctop lazydocker viddy \
-    wget cowsay ffmpeg ipmitool docker-credential-helper-ecr
-```
-
-`micro ~/.config/micro/settings.json`
-
-```json
-{
-    "tabstospaces": true
-}
-```
-
-`micro ~/.config/micro/keybindings.json` (Ctrl-d solves the issue with backspace duplicating the line)
-```json
-{
-    "Alt-/": "lua:comment.comment",
-    "CtrlUnderscore": "lua:comment.comment",
-    "Ctrl-d": "Delete",
-}
-```
-
-`micro ~/.config/ranger/rc.conf`
-```
-copymap <UP>       k
-copymap <DOWN>     l
-copymap <LEFT>     j
-copymap <RIGHT>    é
-```
-
-Node
-- `nvm install 16`
-
-Python
-- `cd ~`
-- `lonesnake`
-- close and re-open terminal
-- check that `which python` points to `~/.lonesnake/venv/bin`
-- `pip install pipx`
-- `for PACKAGE in thefuck httpie magic-wormhole black isort flake8; do pipx install "$PACKAGE"; done`
-
-AWS
-- install AWSCLI with [tutorial](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
-- `aws configure` and enter default keys
-- `mkdir -p ~/.docker && echo '{"credsStore": "ecr-login"}' > ~/.docker/config.json`
-- workaround for [Docker for Mac issue](https://github.com/docker/for-mac/issues/6295)
-  - `alias docker-configure-ecr="mkdir -p ~/.docker && echo '{\"credsStore\": \"ecr-login\"}' > ~/.docker/config.json"`
