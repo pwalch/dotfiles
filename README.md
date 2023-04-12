@@ -125,7 +125,7 @@ brew install \
 }
 ```
 
-`micro ~/.config/micro/keybindings.json` (Ctrl-d solves the issue with backspace duplicating the line)
+`micro ~/.config/micro/bindings.json` (Ctrl-d solves the issue with backspace duplicating the line)
 ```json
 {
     "Alt-/": "lua:comment.comment",
