@@ -181,7 +181,7 @@ v_drive_open_on_startup=off
 `p_qwerty.txt`
 ```
 {=}>{speed8}{-lshift}{=}{+lshift}{space}
-{lshift}{=}>{speed8}{=}{space}
+{lshift}{=}>{speed8}{=}
 {caps}>{speed8}{-lctrl}{z}{+lctrl}
 [lctrl]>[rctrl]
 [lalt]>[lalt]
