@@ -28,6 +28,7 @@ Configure Mac settings:
 - `Dock & Menu Bar > Battery`: show percentage
 - `Mission Control`: deactivate `ALT-DOWN` and `ALT-UP` by replacing them with `-`
 - `Screenshot` app: go to `Options > Save to` and select `Other location`, then create folder in `~/workspace` called `screenshots` and put it there
+- `Finder` app: go to `Preferences > Advanced` and check `Show all filename extensions`
 
 ### Terminal
 
