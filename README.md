@@ -111,7 +111,7 @@ Notes about profile:
 brew tap pwalch/lonesnake
 brew install \
     micro bat sd the_silver_searcher ripgrep up \
-    fd exa tree broot ranger highlight fzf zoxide \
+    fd eza tree broot ranger highlight fzf zoxide \
     direnv git-lfs diff-so-fancy lazygit gitui shellcheck mosh \
     nvm lonesnake \
     coreutils procs dust ctop lazydocker viddy \
