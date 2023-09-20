@@ -12,7 +12,7 @@ After the first boot, perform all the possible OS updates:
 - install major and minor upgrades in System Preferences > Software Updates, then reboot and check again until there are no more updates
 - in terminal, install XCode command line tools: `xcode-select --install`
 - check again System Preferences > Software Updates and install updates if available, then reboot again. Repeat until there are no more updates.
-- System Preferences > Security and Privacy > FileVault: click "Turn On FileVault" then set a recovery key and save it in password manager
+- `System Preferences > Privacy & Security > FileVault`: click `Turn On FileVault` then set a recovery key and save it in password manager
 
 Configure Mac settings:
 - `Appearance`: set `Show scroll bars` to `Always`
@@ -38,7 +38,7 @@ Install Brew:
 
 - `brew install --cask iterm2`
 - close Terminal app and open iTerm app
-- Security & Privacy > Privacy > Full Disk Access > add iTerm
+- `Privacy & Security > Privacy > Full Disk Access`: add iTerm from `Applications` directory
 - generate SSH key
   - `ssh-keygen -t ed25519 -C "$(date "+%Y%m%d")-DEVICE-NAME"`
 - `brew install zsh-completions tmux`
@@ -81,7 +81,7 @@ brew install --cask google-chrome firefox \
   - `Settings > Privacy and security > Security > Scroll to bottom`: toggle “Always use secure connections”
   - in Mac `Preferences > Keyboard > App Shortcuts`, set `Select Previous Tab` to `CMD-UP` `Select Next Tab` to `CMD-DOWN`, `Move Tab to New Window` to `CMD-D`
   - start a meeting on Google Meet and try to get audio, video and share screen, which will trigger permissions request and require restarting the app
-- Flycut: start app and set up permissions, set shortcut to CMD + SHIFT + K, launch on login (https://github.com/TermiT/Flycut/issues/206), check `Move pasted item to top of stack`, `Security and Privacy > Privacy > Accessibility` add Flycut
+- Flycut: start app and set up permissions, set shortcut to CMD + SHIFT + K, launch on login (https://github.com/TermiT/Flycut/issues/206), check `Move pasted item to top of stack`, `Privacy & Security > Privacy > Accessibility` add Flycut
 - Flameshot: start app and try to make a screenshot to trigger permissions request
 - Thunderbird: set up email accounts
   - Gmail: `imap.gmail.com:993`, `smtp.gmail.com:993` with email address as user name and application password as password
@@ -93,7 +93,7 @@ brew install --cask google-chrome firefox \
 - GIMP: start app as it takes longer the first time
 
 VS Code:
-- `Security & Privacy > Privacy > Full Disk Access` > add VS Code
+- `Privacy & Security > Privacy > Full Disk Access` > add VS Code
 - import profile from `pwalch.code-profile` in the repo
 
 Notes about profile:
