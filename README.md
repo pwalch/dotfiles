@@ -15,18 +15,18 @@ After the first boot, perform all the possible OS updates:
 - System Preferences > Security and Privacy > FileVault: click "Turn On FileVault" then set a recovery key and save it in password manager
 
 Configure Mac settings:
-- General: set `Show scroll bars` to `Always`
-- `Battery > Power Adapter`: turn display off after 15 min on battery, after 1h for power adapter
+- `Appearance`: set `Show scroll bars` to `Always`
+- `Lock Screen > Turn display off on ...`: turn display off after 20 min on battery, after 1h for power adapter
 - `Trackpad > Scroll & Zoom` > uncheck `Scroll direction: Natural`
 - `Keyboard > Text Input > Edit...` then disable "Use smart quotes and dashes"
 - `Keyboard`: set `Key Repeat` to fastest and `Delay until Repeat` to shortest
-- `Keyboard` > `Shortcuts`
+- `Keyboard` > `Keyboard Shortcuts`
   - `Input Sources`: uncheck `Select the previous ...` and `Select the next ...`
   - `Keyboard` > `Move focus to active or next window`: press `CMD + <`
-- `Dock & Menu Bar`: set a small size, set `Position on screen` to `right` and set `Automatically hide and show the Dock`
+- `Desktop & Dock`: set a small size, set `Position on screen` to `right` and set `Automatically hide and show the Dock`
 - remove all optional icons from Dock
-- `Dock & Menu Bar > Battery`: show percentage
-- `Mission Control`: deactivate `ALT-DOWN` and `ALT-UP` by replacing them with `-`
+- `Control Centre > Battery`: Show Percentage
+- `Desktop & Dock > Keyboard and Mouse Shortcuts`: deactivate `ALT-DOWN` (Mission Control) and `ALT-UP` (Application windows) by replacing them with `-`
 - `Screenshot` app: go to `Options > Save to` and select `Other location`, then create folder in `~/workspace` called `screenshots` and put it there
 - `Finder` app: go to `Preferences > Advanced` and check `Show all filename extensions`
 
