@@ -45,6 +45,7 @@ Install Brew:
 - install tmux Powerline font: [GitHub link](https://github.com/powerline/fonts/blob/master/FiraMono/FuraMono-Regular%20Powerline.otf)
 - `Preferences > Profiles > Text` and select `Fira Mono for Powerline`
 - `Preferences > Profiles > Keys` and do `Load Preset...` then `Natural Text Editing`
+- `Preferences > Keys` and press `+` then set `Keyboard shortcut` to `OPTION+SPACE`, `Action` to `Send text` and the text below to ` ` 
 - `Preferences > General > Selection`: check `Applications in terminal may access keyboard`
 - install oh-my-zsh
   - `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
