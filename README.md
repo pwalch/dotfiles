@@ -9,10 +9,10 @@ Check out the companion blog post: [Your dev environment is your ideal supermark
 ### Foundation
 
 After the first boot, perform all the possible OS updates:
-- install major and minor upgrades in System Preferences > Software Updates, then reboot and check again until there are no more updates
+- install major and minor upgrades in `System Settings > Software Updates`, then reboot and check again until there are no more updates
 - in terminal, install XCode command line tools: `xcode-select --install`
-- check again System Preferences > Software Updates and install updates if available, then reboot again. Repeat until there are no more updates.
-- `System Preferences > Privacy & Security > FileVault`: click `Turn On FileVault` then set a recovery key and save it in password manager
+- check again `System Settings > Software Updates` and install updates if available, then reboot again. Repeat until there are no more updates.
+- `System Settings > Privacy & Security > FileVault`: click `Turn On FileVault` then set a recovery key and save it in password manager
 
 Configure Mac settings:
 - `Appearance`: set `Show scroll bars` to `Always`
@@ -25,10 +25,10 @@ Configure Mac settings:
   - `Keyboard` > `Move focus to active or next window`: press `CMD + <`
 - `Desktop & Dock`: set a small size, set `Position on screen` to `right` and set `Automatically hide and show the Dock`
 - remove all optional icons from Dock
-- `Control Centre > Battery`: Show Percentage
 - `Desktop & Dock > Keyboard and Mouse Shortcuts`: deactivate `ALT-DOWN` (Mission Control) and `ALT-UP` (Application windows) by replacing them with `-`
+- `Control Centre > Battery`: Show Percentage
 - `Screenshot` app: go to `Options > Save to` and select `Other location`, then create folder in `~/workspace` called `screenshots` and put it there
-- `Finder` app: go to `Preferences > Advanced` and check `Show all filename extensions`
+- `Finder` app: go to `Settings > Advanced` and check `Show all filename extensions`
 
 ### Terminal
 
@@ -43,10 +43,9 @@ Install Brew:
   - `ssh-keygen -t ed25519 -C "$(date "+%Y%m%d")-DEVICE-NAME"`
 - `brew install zsh-completions tmux`
 - install tmux Powerline font: [GitHub link](https://github.com/powerline/fonts/blob/master/FiraMono/FuraMono-Regular%20Powerline.otf)
-- `Preferences > Profiles > Text` and select `Fira Mono for Powerline`
-- `Preferences > Profiles > Keys` and do `Load Preset...` then `Natural Text Editing`
-- `Preferences > Keys` and press `+` then set `Keyboard shortcut` to `OPTION+SPACE`, `Action` to `Send text` and the text below to ` ` 
-- `Preferences > General > Selection`: check `Applications in terminal may access keyboard`
+- `Settings > Profiles > Text` and select `Fira Mono for Powerline`
+- `Settings > Profiles > Keys` and do `(...) Presets...` then `Natural Text Editing`, then `Remove`, then and press `+` then set `Keyboard shortcut` to `OPTION+SPACE`, `Action` to `Send text` and the text below to ` ` 
+- `Settings > General > Selection`: check `Applications in terminal may access keyboard`
 - install oh-my-zsh
   - `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
   - potential nice theme
@@ -70,7 +69,7 @@ Install Brew:
 Install all Brew Cask applications and start each of them for the first time:
 ```bash
 brew install --cask google-chrome firefox \
-    rectangle flycut flameshot \
+    rectangle flycut \
     visual-studio-code pycharm-ce docker \
     thunderbird obsidian vlc gimp zoom libreoffice \
     tailscale
@@ -80,21 +79,29 @@ brew install --cask google-chrome firefox \
 - Chrome
   - make default browser, disable form autofill and password management, install `uBlock Origin` and `1Password`
   - `Settings > Privacy and security > Security > Scroll to bottom`: toggle “Always use secure connections”
-  - in Mac `Preferences > Keyboard > App Shortcuts`, set `Select Previous Tab` to `CMD-UP` `Select Next Tab` to `CMD-DOWN`, `Move Tab to New Window` to `CMD-D`
+  - in `Settings > Keyboard > App Shortcuts`, set `Select Previous Tab` to `CMD-UP` `Select Next Tab` to `CMD-DOWN`, `Move Tab to New Window` to `CMD-D`
   - start a meeting on Google Meet and try to get audio, video and share screen, which will trigger permissions request and require restarting the app
+- Firefox
+  - make default browser, disable password autofill, install `uBlock Origin` extension
+  - `Privacy & Security > Passwords`uncheck `Ask to save passwords`
+  - `Privacy & Security HTTPS-Only Mode` select `Enable HTTPS-Only mode in all windows`
 - Flycut: start app and set up permissions, set shortcut to CMD + SHIFT + K, launch on login (https://github.com/TermiT/Flycut/issues/206), check `Move pasted item to top of stack`, `Privacy & Security > Privacy > Accessibility` add Flycut
-- Flameshot: start app and try to make a screenshot to trigger permissions request
 - Thunderbird: set up email accounts
   - Gmail: `imap.gmail.com:993`, `smtp.gmail.com:993` with email address as user name and application password as password
   - in account settings in `Copies & Folders`, check `Bcc these email addresses` with the email address of the account so all sent messages go to the inbox
 - Zoom
-  - start app and try to get audio, video and share screen, which will trigger permissions request and require restarting the app
+  - log in, start a meeting and try to get audio, video and share screen, which will trigger permissions request and require restarting the app
+  - in `Background & Effects` and enable virtual background
+  - in `Audio` check `Automatically join computer audio when joining` and `Mute my mic when joining`
+  - in `Video` check `Stop my video when joining`
+  - in `PMI Settings` (appears when clicking on down-arrow next to `New Meeting` button), check `Waiting Room` and `Mute participants upon entry`
   - disable audio and video when starting a meeting
 - PyCharm: start app and set it up
 - GIMP: start app as it takes longer the first time
 
 VS Code:
-- `Privacy & Security > Privacy > Full Disk Access` > add VS Code
+- in macOS System Settings, go to `Privacy & Security > Privacy > Full Disk Access` then add `VS Code`
+- `Settings > Profile` then `Import Profile...`
 - import profile from `pwalch.code-profile` in the repo
 
 Notes about profile:
