@@ -185,6 +185,35 @@ fi
 EOM
 }
 
+# Safeguard shim against accidental 'pip install' to
+# the global lonesnake environment.
+# Call '~/.lonesnake/venv/bin/pip' to bypass.
+function pip () {
+  if [[ -z "$VIRTUAL_ENV" ]]; then
+    echo "[ERROR] Cannot run 'pip' command outside" \
+      "of a VIRTUAL_ENV."
+    return 1
+  fi
+
+  local active_pip=""
+  if ! active_pip="$(whence -p pip)"; then
+    echo "[ERROR] There is no 'pip' command in PATH:" \
+      "${PATH}"
+    return 1
+  fi
+
+  local global_pip=""
+  global_pip="${HOME}/.lonesnake/venv/bin/pip"
+  if [[ -f "$global_pip" ]] && \
+      [[ "$active_pip" == "$global_pip" ]]; then
+    echo "[ERROR] Cannot run 'pip' command with global" \
+        "environment: ${global_pip}"
+    return 1
+  fi
+
+  command pip "$@"
+}
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
