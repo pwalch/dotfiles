@@ -159,7 +159,7 @@ Python
 - `lonesnake`
 - close and re-open terminal
 - check that `which python` points to `~/.lonesnake/venv/bin` (this should be done by zshrc_custom)
-- `pip install pipx`
+- `~/.lonesnake/venv/bin/pip install pipx`
 - `for PACKAGE in thefuck httpie magic-wormhole black isort flake8; do pipx install "$PACKAGE"; done`
 
 AWS
