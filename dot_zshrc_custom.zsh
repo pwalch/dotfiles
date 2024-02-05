@@ -15,6 +15,8 @@ if [[ "$OSTYPE" == 'darwin'* ]]; then
   PROMPT+=' '
 fi
 
+test -e /Users/pierre/.iterm2_shell_integration.zsh && source /Users/pierre/.iterm2_shell_integration.zsh || true
+
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="micro"
 export PAGER="bat"
