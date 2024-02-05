@@ -44,7 +44,7 @@ Install Brew:
 - `brew install zsh-completions tmux`
 - install tmux Powerline font: [GitHub link](https://github.com/powerline/fonts/blob/master/FiraMono/FuraMono-Regular%20Powerline.otf)
 - `Settings > Profiles > Text` and select `Fira Mono for Powerline`
-- `Settings > Profiles > Keys` and do `(...) Presets...` then `Natural Text Editing`, then `Remove`, then and press `+` then set `Keyboard shortcut` to `OPTION+SPACE`, `Action` to `Send text` and the text below to ` ` 
+- `Settings > Profiles > Keys` and do `(...) Presets...` then `Natural Text Editing`, then `Remove`, then and press `+` then set `Keyboard shortcut` to `OPTION+SPACE`, `Action` to `Send text` and the text below to ` `
 - `Settings > General > Selection`: check `Applications in terminal may access keyboard`
 - install oh-my-zsh
   - `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
@@ -140,6 +140,12 @@ brew install \
     "Alt-/": "lua:comment.comment",
     "CtrlUnderscore": "lua:comment.comment",
     "Ctrl-d": "Delete",
+    "AltShiftUp": "SpawnMultiCursorUp",
+    "AltShiftDown": "SpawnMultiCursorDown",
+    "AltUp": "MoveLinesUp",
+    "AltDown": "MoveLinesDown",
+    "CtrlUp": "DuplicateLine",
+    "CtrlDown": "DuplicateLine"
 }
 ```
 
