@@ -149,9 +149,9 @@ alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale' # all + e
 
 alias lg=lazygit
 
-alias vsc="code ."
-alias vscn="code --new-window"
-alias vscr="code --reuse-window"
+alias vsc="code --profile 'pwalch' ."
+alias vscn="code --profile 'pwalch' --new-window"
+alias vscr="code --profile 'pwalch' --reuse-window"
 
 # global lonesnake auto-activation
 export PATH="${HOME}/.lonesnake/venv/bin:${PATH}"
