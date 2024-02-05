@@ -38,7 +38,24 @@ Install Brew:
 
 - `brew install --cask iterm2`
 - close Terminal app and open iTerm app
-- `Privacy & Security > Privacy > Full Disk Access`: add iTerm from `Applications` directory
+- `System Settings > Privacy & Security > Privacy > Full Disk Access`: add iTerm from `Applications` directory
+- generate SSH key
+  - `ssh-keygen -t ed25519 -C "$(date "+%Y%m%d")-DEVICE-NAME"`
+- `brew install zsh-completions tmux`
+- install tmux Powerline font: [GitHub link](https://github.com/powerline/fonts/blob/master/FiraMono/FuraMono-Regular%20Powerline.otf)
+- `Settings > Profiles > Text` and select `Fira Mono for Powerline`
+- `Settings > Profiles > Keys` and do `(...) Presets...` then `Natural Text Editing`, then `Remove`, then and press `+` then set `Keyboard shortcut` to `OPTION+SPACE`, `Action` to `Send text` and the text below to ` `
+- `Settings > General > Selection`: check `Applications in terminal may access keyboard`
+- `Settings > Keys > Key Bindings`
+  - set `Next Pane` to `CMD+j`
+  - set `Split Vertically with "Default" Profile` to `CMD+k`
+  - set `Split Horizontally with "Default" Profile` to `CMD+l`
+  - set `New Tab with "Default" Profile"` to `CMD+t`
+  - set `Scroll One Line Up` to `CMD+up`
+  - set `Scroll One Line Down` to `CMD+down`
+  - set `Previous Tab` to `ALT+CMD+LEFT`
+  - set `Next Tab` to `ALT+CMD+RIGHT`
+- `iTerm2 > Install Shell Integration` and follow instructions
 - generate SSH key
   - `ssh-keygen -t ed25519 -C "$(date "+%Y%m%d")-DEVICE-NAME"`
 - `brew install zsh-completions tmux`
