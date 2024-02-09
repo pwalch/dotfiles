@@ -43,6 +43,7 @@ Install Brew:
   - `ssh-keygen -t ed25519 -C "$(date "+%Y%m%d")-DEVICE-NAME"`
 - `brew install zsh-completions tmux`
 - install tmux Powerline font: [GitHub link](https://github.com/powerline/fonts/blob/master/FiraMono/FuraMono-Regular%20Powerline.otf)
+- `Settings > Appearance > Dimming` set `Dimming amount` to 15
 - `Settings > Profiles > Text` and select `Fira Mono for Powerline`
 - `Settings > Profiles > Keys` and do `(...) Presets...` then `Natural Text Editing`, then `Remove`, then and press `+` then set `Keyboard shortcut` to `OPTION+SPACE`, `Action` to `Send text` and the text below to ` `
 - `Settings > General > Selection`: check `Applications in terminal may access keyboard`
