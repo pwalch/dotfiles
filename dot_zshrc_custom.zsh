@@ -143,11 +143,7 @@ alias rg="rg --sort-files"
 # If we need to unalias entries from common-aliases from Oh-My-ZSH
 # for COMMAND in l ll la; do unalias \$COMMAND; done
 alias ls='eza' # ls
-alias l='eza -lbFa --git' # list, size, type, git
-alias ll='eza -lbGFa --git' # long list
-alias llm='eza -lbGda --git --sort=modified' # long list, modified date sort
-alias la='eza -lbhHigUmuSa --time-style=long-iso --git --color-scale' # all list
-alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale' # all + extended list
+alias l='eza --all --long --binary --git --classify --color-scale --hyperlink --group-directories-first --time-style=long-iso --octal-permissions --header --group'
 
 alias lg=lazygit
 
