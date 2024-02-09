@@ -228,3 +228,18 @@ mkdir -p "$DAILY_DIRS"
 alias todaydir='mkdir -p "${DAILY_DIRS}/$(date +%Y%m%d)-dailydir/" && cd "${DAILY_DIRS}/$(date +%Y%m%d)-dailydir/"'
 
 alias dwl='cd $HOME/Downloads'
+
+# print iTerm shortcuts
+function iii () {
+cat <<EOF
+Copy mode:
+- enter copy mode: CMD+SHIFT+C
+- select full line: SHIFT+V
+- start selecting: V
+- quit copy mode: CTRL+SPACE
+
+Shortcuts:
+- copy last command output: CMD+SHIFT+A
+- find next: CMD+G
+EOF
+}
