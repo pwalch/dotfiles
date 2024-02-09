@@ -102,7 +102,7 @@ brew install --cask google-chrome firefox \
   - make default browser, disable password autofill, install `uBlock Origin` extension
   - `Privacy & Security > Passwords`uncheck `Ask to save passwords`
   - `Privacy & Security HTTPS-Only Mode` select `Enable HTTPS-Only mode in all windows`
-- Flycut: start app and set up permissions, set shortcut to CMD + SHIFT + K, launch on login (https://github.com/TermiT/Flycut/issues/206), check `Move pasted item to top of stack`, `Privacy & Security > Privacy > Accessibility` add Flycut
+- Flycut: start app and set up permissions, set shortcut to CMD + SHIFT + K, check `Move pasted item to top of stack`, `Privacy & Security > Privacy > Accessibility` add Flycut, launch on login by going to "Login Items" and adding "Flycut.app" (https://github.com/TermiT/Flycut/issues/206)
 - Thunderbird: set up email accounts
   - Gmail: `imap.gmail.com:993`, `smtp.gmail.com:993` with email address as user name and application password as password
   - in account settings in `Copies & Folders`, check `Bcc these email addresses` with the email address of the account so all sent messages go to the inbox
