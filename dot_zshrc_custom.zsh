@@ -141,7 +141,7 @@ alias catp="bat"
 alias rg="rg --sort-files"
 
 # If we need to unalias entries from common-aliases from Oh-My-ZSH
-# for COMMAND in l ll la; do unalias \$COMMAND; done
+for COMMAND in l la ll lsa; do unalias "$COMMAND"; done
 alias ls='eza' # ls
 alias l='eza --all --long --binary --git --classify --color-scale --hyperlink --group-directories-first --time-style=long-iso --octal-permissions --header --group'
 
