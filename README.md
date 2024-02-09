@@ -28,7 +28,7 @@ Configure Mac settings:
 - `Desktop & Dock > Keyboard and Mouse Shortcuts`: deactivate `ALT-DOWN` (Mission Control) and `ALT-UP` (Application windows) by replacing them with `-`
 - `Control Centre > Battery`: Show Percentage
 - `Screenshot` app: go to `Options > Save to` and select `Other location`, then create folder in `~/workspace` called `screenshots` and put it there
-- `Finder` app: go to `Settings > Advanced` and check `Show all filename extensions`
+- `Finder` app: go to `Settings > Advanced` and check `Show all filename extensions`, add home directory to Favourites, run `mkdir ~/dailydirs` and add `dailydirs` to Favourites
 
 ### Terminal
 
