@@ -23,6 +23,7 @@ Configure Mac settings:
 - `Keyboard` > `Keyboard Shortcuts`
   - `Input Sources`: uncheck `Select the previous ...` and `Select the next ...`
   - `Keyboard` > `Move focus to active or next window`: press `CMD + <`
+- `Mouse > Tracking speed`: set to 3rd cursor from the right
 - `Desktop & Dock`: set a small size, set `Position on screen` to `right` and set `Automatically hide and show the Dock`
 - remove all optional icons from Dock
 - `Desktop & Dock > Keyboard and Mouse Shortcuts`: deactivate `ALT-DOWN` (Mission Control) and `ALT-UP` (Application windows) by replacing them with `-`
