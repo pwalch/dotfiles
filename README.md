@@ -140,10 +140,11 @@ brew tap pwalch/lonesnake
 brew install \
     micro bat sd the_silver_searcher ripgrep up \
     fd eza tree broot ranger highlight fzf zoxide \
-    direnv git-lfs diff-so-fancy lazygit gitui shellcheck mosh \
+    direnv git-lfs diff-so-fancy lazygit shellcheck mosh \
     nvm lonesnake \
     coreutils procs dust ctop lazydocker viddy \
-    wget cowsay ffmpeg ipmitool docker-credential-helper-ecr
+    wget cowsay ffmpeg ipmitool docker-credential-helper-ecr \
+    jless
 ```
 
 `micro ~/.config/micro/settings.json`
