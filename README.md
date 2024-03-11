@@ -66,6 +66,7 @@ Install Brew:
 - `Settings > Profiles > Keys` and do `(...) Presets...` then `Natural Text Editing`, then `Remove`, then and press `+` then set `Keyboard shortcut` to `OPTION+SPACE`, `Action` to `Send text` and the text below to ` `
 - `Settings > General > Selection`: check `Applications in terminal may access keyboard`
 - `Settings > Keyboard > Keyboard Shortcuts > App Shortcuts`, add a new item with application `iTerm.app` with menu title `Restart Session` and set shortcut `CMD+SHIFT+R`
+- `Settings > Keyboard > Keyboard Shortcuts > Input Sources` disable both shortcuts for `Select the previous input source` and `Select next source in Input menu`
 - install oh-my-zsh
   - `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
   - potential nice theme
