@@ -57,15 +57,8 @@ Install Brew:
   - set `Scroll One Line Down` to `CMD+down`
   - set `Previous Tab` to `ALT+CMD+LEFT`
   - set `Next Tab` to `ALT+CMD+RIGHT`
-- `iTerm2 > Install Shell Integration` and follow instructions
-- generate SSH key
-  - `ssh-keygen -t ed25519 -C "$(date "+%Y%m%d")-DEVICE-NAME"`
-- `brew install zsh-completions tmux`
-- install tmux Powerline font: [GitHub link](https://github.com/powerline/fonts/blob/master/FiraMono/FuraMono-Regular%20Powerline.otf)
-- `Settings > Profiles > Text` and select `Fira Mono for Powerline`
-- `Settings > Profiles > Keys` and do `(...) Presets...` then `Natural Text Editing`, then `Remove`, then and press `+` then set `Keyboard shortcut` to `OPTION+SPACE`, `Action` to `Send text` and the text below to ` `
-- `Settings > General > Selection`: check `Applications in terminal may access keyboard`
 - `Settings > Keyboard > Keyboard Shortcuts > App Shortcuts`, add a new item with application `iTerm.app` with menu title `Restart Session` and set shortcut `CMD+SHIFT+R`
+- `iTerm2 > Install Shell Integration` and follow instructions
 - install oh-my-zsh
   - `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
   - potential nice theme
