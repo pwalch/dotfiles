@@ -83,7 +83,7 @@ Install all Brew Cask applications and start each of them for the first time:
 ```bash
 brew install --cask google-chrome firefox \
     rectangle flycut \
-    visual-studio-code pycharm-ce docker \
+    visual-studio-code pycharm-ce docker git-lfs \
     thunderbird obsidian vlc gimp zoom libreoffice \
     tailscale
 ```
