@@ -5,9 +5,12 @@ export TERM="xterm-256color"
 # Disable autocomplete on scp, as it is always slow
 zstyle ':completion:*' remote-access no
 
+test -e "$HOME/.iterm2_shell_integration.zsh" && source "$HOME/.iterm2_shell_integration.zsh" || true
+
 # Overwriting robbyrussel's theme so it has newlines
 PROMPT_NEWLINE=$'\n'
-PROMPT='${PROMPT_NEWLINE}%{$fg_bold[cyan]%}---- %c%{$reset_color%} $(git_prompt_info)'
+PROMPT="%{$(iterm2_prompt_mark)%}"
+PROMPT+='${PROMPT_NEWLINE}%{$fg_bold[cyan]%}---- %c%{$reset_color%} $(git_prompt_info)'
 PROMPT+="${PROMPT_NEWLINE}%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$reset_color%}"
 if [[ "$OSTYPE" == 'darwin'* ]]; then
   # There is little space by default after the arrow without
@@ -15,7 +18,6 @@ if [[ "$OSTYPE" == 'darwin'* ]]; then
   PROMPT+=' '
 fi
 
-test -e /Users/pierre/.iterm2_shell_integration.zsh && source /Users/pierre/.iterm2_shell_integration.zsh || true
 
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="micro"
