@@ -50,8 +50,8 @@ Install Brew:
 - `Settings > General > Selection`: check `Applications in terminal may access keyboard`
 - `Settings > Keys > Key Bindings`
   - set `Next Pane` to `CMD+j`
-  - set `Split Vertically with "Default" Profile` to `CMD+k`
-  - set `Split Horizontally with "Default" Profile` to `CMD+l`
+  - set `Split Vertically with Profile` (Default) to `CMD+k`
+  - set `Split Horizontally with Profile` (Default) to `CMD+l`
   - set `New Tab with "Default" Profile"` to `CMD+t`
   - set `Scroll One Line Up` to `CMD+up`
   - set `Scroll One Line Down` to `CMD+down`
