@@ -21,7 +21,6 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="micro"
-export PAGER="bat"
 
 alias zshc="$EDITOR ~/.zshrc_custom.zsh"
 alias zshs="$EDITOR ~/.secrets.sh"
@@ -137,7 +136,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 # Modern tools replace old ones
-alias cat="bat --paging never --plain"
+alias cat="bat --paging=never"
 alias catp="bat"
 
 alias rg="rg --sort-files"
