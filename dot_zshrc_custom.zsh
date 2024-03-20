@@ -7,6 +7,21 @@ zstyle ':completion:*' remote-access no
 
 test -e "$HOME/.iterm2_shell_integration.zsh" && source "$HOME/.iterm2_shell_integration.zsh" || true
 
+function apply-itomate-layout () {
+  local itomate_config_path="$HOME/.itomate.yml"
+  if ! [[ -f "$itomate_config_path" ]]; then
+    echo "[ERROR] Could not find '$itomate_config_path'"
+    return 1
+  fi
+
+  if ! itomate -c "$itomate_config_path"; then
+    echo "[ERROR] Could not run itomate"
+    return 1
+  fi
+}
+
+alias aaa="apply-itomate-layout"
+
 # Overwriting robbyrussel's theme so it has newlines
 PROMPT_NEWLINE=$'\n'
 PROMPT="%{$(iterm2_prompt_mark)%}"

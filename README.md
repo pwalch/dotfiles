@@ -14,6 +14,9 @@ After the first boot, perform all the possible OS updates:
 - check again `System Settings > Software Updates` and install updates if available, then reboot again. Repeat until there are no more updates.
 - `System Settings > Privacy & Security > FileVault`: click `Turn On FileVault` then set a recovery key and save it in password manager
 
+Create workspace directory:
+- `mkdir workspace`
+
 Configure Mac settings:
 - `Appearance`: set `Show scroll bars` to `Always`
 - `Lock Screen > Turn display off on ...`: turn display off after 20 min on battery, after 1h for power adapter
@@ -33,6 +36,20 @@ Configure Mac settings:
 
 ### Terminal
 
+Populate iTomate config file:
+- `nano ~/.itomate.yml`
+
+```yaml
+version: "1.0"
+profile: "pwalch profile"
+tabs:
+  workspace:
+    root: "~/workspace"
+    title: "workspace"
+    panes:
+      - position: "1/1"
+```
+
 Install Brew:
 - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 - close and re-open Terminal
@@ -44,6 +61,7 @@ Install Brew:
   - `ssh-keygen -t ed25519 -C "$(date "+%Y%m%d")-DEVICE-NAME"`
 - `brew install zsh-completions tmux`
 - install tmux Powerline font: [GitHub link](https://github.com/powerline/fonts/blob/master/FiraMono/FuraMono-Regular%20Powerline.otf)
+- `Settings > General > Magic` and check `Enable Python API`
 - `Settings > Appearance > Dimming` set `Dimming amount` to 15
 - `Settings > Profiles > Text` and select `Fira Mono for Powerline`
 - `Settings > Profiles > Keys` and do `(...) Presets...` then `Natural Text Editing`, then `Remove`, then and press `+` then set `Keyboard shortcut` to `OPTION+SPACE`, `Action` to `Send text` and the text below to ` `
@@ -180,7 +198,7 @@ Python
 - close and re-open terminal
 - check that `which python` points to `~/.lonesnake/venv/bin` (this should be done by zshrc_custom)
 - `~/.lonesnake/venv/bin/pip install pipx`
-- `for PACKAGE in thefuck httpie magic-wormhole black isort flake8; do pipx install "$PACKAGE"; done`
+- `for PACKAGE in itomate thefuck httpie magic-wormhole black isort flake8; do pipx install "$PACKAGE"; done`
 
 AWS
 - install AWSCLI with [tutorial](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
