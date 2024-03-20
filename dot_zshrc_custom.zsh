@@ -72,23 +72,6 @@ function edit_tmux_lines () {
        micro
 }
 
-# De-comment and customize according to your most frequently used directories
-# function dev-tmux () {
-#   # Create a new tmux session with some windows opened at specific locations
-#   # that I need frequently
-#   local TMUX_SESSION_NAME="dev-tmux"
-#   tmux new-session -d -s "$TMUX_SESSION_NAME" -n "firstwindow"
-#   tmux new-window -t "${TMUX_SESSION_NAME}:" -n "todaydirs" -c "${TODAYDIRS}"
-#   tmux new-window -t "${TMUX_SESSION_NAME}:" -n "my-frequent-dir-1" -c "${WORKSPACE_DIR}/frequent-dir-1"
-#   tmux new-window -t "${TMUX_SESSION_NAME}:" -n "my-frequent-dir-2" -c "${WORKSPACE_DIR}/frequent-dir-2"
-#   # Repeat at needed
-#   tmux kill-window -t "${TMUX_SESSION_NAME}:firstwindow"
-#   tmux select-window -t "${TMUX_SESSION_NAME}:todaydirs"
-#   tmux attach-session -d
-# }
-
-alias dev-tmux-restart='tmux kill-server; dev-tmux'
-
 # SSH into a machine without the host key check (avoid "someone is doing something nasty" error)
 alias sshi="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 # Copy my public key to clipboard to share it quickly
