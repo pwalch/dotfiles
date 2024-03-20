@@ -109,7 +109,7 @@ brew install --cask google-chrome firefox \
 - Rectangle: start app and set up permissions, set shortcuts for left/right half, next/previous display and fullscreen, launch on login
 - Chrome
   - make default browser, disable form autofill and password management, install `uBlock Origin` and `1Password`
-  - `Settings > Privacy and security > Security > Scroll to bottom`: toggle “Always use secure connections”
+  - `Settings > Privacy and security > Security > Scroll to bottom`: toggle `Always use secure connections`
   - in `Settings > Keyboard > App Shortcuts`, set `Select Previous Tab` to `CMD-UP` `Select Next Tab` to `CMD-DOWN`, `Move Tab to New Window` to `CMD-D`
   - start a meeting on Google Meet and try to get audio, video and share screen, which will trigger permissions request and require restarting the app
 - Firefox
@@ -118,7 +118,7 @@ brew install --cask google-chrome firefox \
   - `Privacy & Security HTTPS-Only Mode` select `Enable HTTPS-Only mode in all windows`
 - Flycut: start app and set up permissions, set shortcut to CMD + SHIFT + K, check `Move pasted item to top of stack`, `Privacy & Security > Privacy > Accessibility` add Flycut, launch on login by going to "Login Items" and adding "Flycut.app" (https://github.com/TermiT/Flycut/issues/206)
 - Thunderbird: set up email accounts
-  - Gmail: `imap.gmail.com:993`, `smtp.gmail.com:993` with email address as user name and application password as password
+  - Gmail: `imap.gmail.com:993`, `smtp.gmail.com:993` with email address as user name and application password as password
   - in account settings in `Copies & Folders`, check `Bcc these email addresses` with the email address of the account so all sent messages go to the inbox
 - Zoom
   - log in, start a meeting and try to get audio, video and share screen, which will trigger permissions request and require restarting the app
@@ -128,7 +128,7 @@ brew install --cask google-chrome firefox \
   - in `PMI Settings` (appears when clicking on down-arrow next to `New Meeting` button), check `Waiting Room` and `Mute participants upon entry`
   - disable audio and video when starting a meeting
 - PyCharm: start app and set it up
-- GIMP: start app as it takes longer the first time
+- GIMP: start app as it takes longer the first time
 - noTunes
   - start noTunes app and accept to open
   - `System Preferences > Login Items` in `Open at Login` add noTunes
@@ -212,7 +212,7 @@ AWS
 
 ### Kinesis Keyboard config
 
-- enter Power User Mode: `PROGM + SHIFT + ESC`
+- enter Power User Mode: `PROGM + SHIFT + ESC`
 - enable/disable virtual drive: `PROGM + F1`
 
 `state.txt`
