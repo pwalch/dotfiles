@@ -100,7 +100,7 @@ Install Brew:
 Install all Brew Cask applications and start each of them for the first time:
 ```bash
 brew install --cask google-chrome firefox \
-    rectangle flycut \
+    rectangle flycut notunes \
     visual-studio-code pycharm-ce docker git-lfs \
     thunderbird obsidian vlc gimp zoom libreoffice \
     tailscale
@@ -129,6 +129,9 @@ brew install --cask google-chrome firefox \
   - disable audio and video when starting a meeting
 - PyCharm: start app and set it up
 - GIMP: start app as it takes longer the first time
+- noTunes
+  - start noTunes app and accept to open
+  - `System Preferences > Login Items` in `Open at Login` add noTunes
 
 VS Code:
 - in macOS System Settings, go to `Privacy & Security > Privacy > Full Disk Access` then add `VS Code`
