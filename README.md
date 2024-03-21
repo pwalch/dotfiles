@@ -73,8 +73,8 @@ Install Brew:
   - set `New Tab with "Default" Profile"` to `CMD+t`
   - set `Scroll One Line Up` to `CMD+up`
   - set `Scroll One Line Down` to `CMD+down`
-  - set `Previous Tab` to `ALT+CMD+LEFT`
-  - set `Next Tab` to `ALT+CMD+RIGHT`
+  - set `Previous Tab` to `ALT+CMD+LEFT` and `CMD-UP`
+  - set `Next Tab` to `ALT+CMD+RIGHT` and `CMD-DOWN`
 - `Settings > Keyboard > Keyboard Shortcuts > App Shortcuts`, add a new item with application `iTerm.app` with menu title `Restart Session` and set shortcut `CMD+SHIFT+R`
 - `iTerm2 > Install Shell Integration` and follow instructions
 - install oh-my-zsh
