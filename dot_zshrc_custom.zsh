@@ -113,7 +113,7 @@ function br {
 
 alias rr="ranger"
 
-[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
+eval "$(fzf --zsh)"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
