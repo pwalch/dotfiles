@@ -157,7 +157,7 @@ brew install \
     direnv git-lfs diff-so-fancy lazygit shellcheck mosh \
     nvm lonesnake \
     coreutils procs dust ctop lazydocker viddy \
-    wget cowsay ffmpeg ipmitool docker-credential-helper-ecr \
+    wget cowsay ffmpeg ipmitool awscli docker-credential-helper-ecr \
     jless
 ```
 
