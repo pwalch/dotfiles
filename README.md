@@ -100,7 +100,7 @@ Install Brew:
 Install all Brew Cask applications and start each of them for the first time:
 ```bash
 brew install --cask google-chrome firefox \
-    rectangle flycut notunes \
+    rectangle flycut notunes caffeine \
     visual-studio-code pycharm-ce docker git-lfs \
     thunderbird obsidian vlc gimp zoom libreoffice \
     tailscale
