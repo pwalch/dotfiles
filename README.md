@@ -158,7 +158,7 @@ brew install \
     nvm lonesnake \
     coreutils procs dust ctop lazydocker viddy \
     wget cowsay ffmpeg ipmitool awscli docker-credential-helper-ecr \
-    jless
+    jless p7zip
 ```
 
 `micro ~/.config/micro/settings.json`
