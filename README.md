@@ -129,12 +129,24 @@ AWS
 
 Install all Brew Cask applications and start each of them for the first time:
 ```bash
-brew install --cask google-chrome firefox \
+brew install --cask ukulele google-chrome firefox \
     rectangle flycut notunes caffeine \
     visual-studio-code docker sloth sniffnet \
     thunderbird obsidian vlc gimp zoom \
     tailscale 1password chatgpt raycast
 ```
+
+- Ukulele:
+  - mkdir `~/.keyboard-layouts`
+  - File > Install > Show Organizer > Set Folder and select `~/.keyboard-layouts`
+  - File > New From Current Input Source, then right-click on "Swiss French" and click "Set Keyboard Name and Script" and set name to `Swiss French pwalch`,
+  - double-click on `Swiss French pwalch`, then press OPT on physical keyboard and double click on "~" key square, go to "Terminator" tab and put the empty string, then to Make Output and put the "~" character (including the space to complete its constructions)
+  - File > Save, select File Format "Keyboard Layout Bundle" and save as `~/.keyboard-layouts/swiss-french-pwalch.bundle`
+  - drag'n'drop `swiss-french-pwalch` from Not Installed column to "Installed for All Users" column, then enter password and proceed
+  - you will be asked to reboot, press ok, then reboot
+  - System Settings > Keyboard > Text Input > Input Sources > Edit > Press Plus, in "French", select `Swiss French pwalch`
+  - on the top-right of the screen, select keyboard layout `Swiss French pwalch`
+  - tilde should now type directly, without needing a space
 
 - Rectangle: start app and set up permissions, set shortcuts for left/right half, next/previous display and fullscreen, launch on login, hide menu bar icon
 - Flycut: start app and set up permissions, set shortcut to CMD + SHIFT + K, check `Move pasted item to top of stack`, `Privacy & Security > Privacy > Accessibility` add Flycut, launch on login by going to "Login Items" and adding "Flycut.app" (https://github.com/TermiT/Flycut/issues/206)
