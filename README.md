@@ -132,7 +132,7 @@ Install all Brew Cask applications and start each of them for the first time:
 brew install --cask ukulele google-chrome firefox \
     rectangle flycut notunes caffeine \
     visual-studio-code docker sloth sniffnet \
-    thunderbird obsidian vlc gimp zoom \
+    thunderbird obsidian vlc gimp zoom balenaetcher wireshark \
     tailscale 1password chatgpt raycast
 ```
 
