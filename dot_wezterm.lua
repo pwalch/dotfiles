@@ -6,21 +6,12 @@ local workspace_dir = wezterm.home_dir .. "/workspace"
 -- On first window, use workspace dir
 config.default_cwd = workspace_dir
 
-config.keys = {
-  -- Make OPT-n produce the tilde on Swiss keyboard, otherwise it makes the noise
-  {key='n', mods='OPT', action=wezterm.action{SendString="~"}},
+-- Avoid using OPT as meta key for special bindings, to avoid random behaviors
+-- when typing special characters.
+config.send_composed_key_when_left_alt_is_pressed = true
+config.send_composed_key_when_right_alt_is_pressed = true
 
-  -- Rebind option keys, as by default they give random keys
-  {key='1', mods='OPT', action=wezterm.action.DisableDefaultAssignment},
-  {key='2', mods='OPT', action=wezterm.action.DisableDefaultAssignment},
-  {key='3', mods='OPT', action=wezterm.action{SendString="#"}},
-  {key='4', mods='OPT', action=wezterm.action.DisableDefaultAssignment},
-  {key='5', mods='OPT', action=wezterm.action{SendString="["}},
-  {key='6', mods='OPT', action=wezterm.action{SendString="]"}},
-  {key='7', mods='OPT', action=wezterm.action{SendString="|"}},
-  {key='8', mods='OPT', action=wezterm.action{SendString="{"}},
-  {key='9', mods='OPT', action=wezterm.action{SendString="}"}},
-  
+config.keys = {
   -- Make OPT-LEFT/RIGHT navigate between words
   {key="LeftArrow", mods="OPT", action=wezterm.action{SendString="\x1bb"}},
   {key="RightArrow", mods="OPT", action=wezterm.action{SendString="\x1bf"}},
