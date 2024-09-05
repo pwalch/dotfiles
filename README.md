@@ -16,21 +16,22 @@ After the first boot, perform all the possible OS updates:
 - Log into Apple ID account in AppStore
 
 Create important directories:
-- `mkdir ~/workspace` and add a finder shortcut
-- `ln -s "$HOME/Downloads" "$HOME/workspace/downloads"`
+- `mkdir ~/workspace`
 - `mkdir -p ~/.local/bin`
 
 Configure Mac settings:
 - `Appearance`: set `Show scroll bars` to `Always`
 - `Lock Screen > Turn display off on ...`: turn display off after 20 min on battery, after 1h for power adapter
 - `Trackpad > Scroll & Zoom` > disable `Natural Scrolling`
+- `Mouse` > disable `Natural Scrolling`
 - Add printer
 
 Keyboard
 - `Keyboard > Text Input > Edit...` then disable "Use smart quotes and dashes"
 - `Keyboard`: set `Key Repeat` to fastest and `Delay until Repeat` to shortest
 - `Keyboard` > `Keyboard Shortcuts`
-  - `Mission Control` > disable Show Desktop (F11)
+  - `Mission Control` > disable `Mission Control`
+  - `Mission Control` > disable `Show Desktop` (F11)
   - `Display` > disable decrease and increase (F14 and F15)
   - `Input Sources`: uncheck `Select the previous ...` and `Select the next ...`
   - `Keyboard` > `Move focus to active or next window`: press `CMD + <`
@@ -46,8 +47,9 @@ Desktop and dock
 - `Control Center > Battery`: Show Percentage
 
 Screen captures
-- `Screenshot` app: go to `Options > Save to` and select `Other location`, then create folder in `~/workspace` called `screenshots` and put it there
-- `Quicktime > New Screen Recording > Options` > Other location > ~/workspace/screen-recordings
+- `mkdir ~/workspace/screen-recordings ~/workspace/screen-recordings`
+- `Screenshot` app: go to `Options > Save to > Other location` > set to `~/workspace/screenshots`
+- `Quicktime > New Screen Recording > Options > Other location` > set to `~/workspace/screen-recordings`
 
 Finder
 - `Finder` app: go to `Settings > Advanced` and check `Show all filename extensions`
@@ -60,7 +62,7 @@ Finder
 
 Install Brew:
 - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-- copy command from Brew instructions to add `brew` to PATH
+- `echo '# If chezmoi not yet applied, register Brew\nif [[ ! -f "$HOME/.zshrc_custom.zsh" ]]; then\n  eval "$(/opt/homebrew/bin/brew shellenv)";\nfi' > ~/.zshenv`
 
 Terminal configuration
 - generate SSH key
@@ -69,46 +71,26 @@ Terminal configuration
 - install oh-my-zsh and some of its extensions
 
 ```bash
+# Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
+
+# Install oh-my-zsh extensions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions && \
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting && \
+  git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
 ```
 
 Install Wezterm:
 - `brew install --cask wezterm`
-- set up Wezterm shell integration
+- install Wezterm terminal integration
+  - `curl -sL -o ~/.wezterm_integration.sh https://raw.githubusercontent.com/wez/wezterm/main/assets/shell-integration/wezterm.sh`
 - close Terminal app and open Wezterm app
 - `System Settings > Privacy & Security > Privacy > Full Disk Access`: add `Wezterm` from `Applications` directory
 
-
 ### Terminal applications
 
-```bash
-# Text management
-brew install micro bat sd ripgrep up coreutils gnu-sed jless cowsay
-
-# File management
-brew install fd eza tree fzf p7zip
-
-# Navigation and environment
-brew install zoxide direnv yazi
-
-# Monitoring
-brew install procs dust ctop lazydocker viddy
-
-# Git
-brew install git-lfs diff-so-fancy lazygit
-
-# Lang-specific
-brew tap pwalch/lonesnake && brew install lonesnake nvm shellcheck
-
-# Servers
-brew install awscli docker-credential-helper-ecr ipmitool mosh wget
-
-# Media
-brew install ffmpeg
-```
+Install Brew terminal applications
+- `https://raw.githubusercontent.com/pwalch/dotfiles/main/brew_install.sh | bash`
 
 Python
 - `cd ~`
@@ -122,19 +104,14 @@ AWS
 - workaround for [Docker for Mac issue](https://github.com/docker/for-mac/issues/6295)
   - `alias docker-configure-ecr="mkdir -p ~/.docker && echo '{\"credsStore\": \"ecr-login\"}' > ~/.docker/config.json"`
 
+Apply chezmoi
 - apply `chezmoi`
   - `sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply pwalch`
 
 ### GUI applications
 
-Install all Brew Cask applications and start each of them for the first time:
-```bash
-brew install --cask ukulele google-chrome firefox \
-    rectangle flycut notunes caffeine \
-    visual-studio-code docker sloth sniffnet \
-    thunderbird obsidian vlc gimp zoom balenaetcher wireshark \
-    tailscale 1password chatgpt raycast
-```
+Install all Brew Cask applications, then start all of them for the first time:
+- `https://raw.githubusercontent.com/pwalch/dotfiles/main/brew_cask_install.sh | bash`
 
 - Ukulele:
   - mkdir `~/.keyboard-layouts`

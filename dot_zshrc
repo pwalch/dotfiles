@@ -17,3 +17,5 @@ if [[ -f "$HOME/.zshrc_specific.zsh" ]]; then
   # File for machine-specific configs
   source "$HOME/.zshrc_specific.zsh"
 fi
+
+source "$HOME/.wezterm_integration.sh"
