@@ -113,11 +113,11 @@ Apply chezmoi
 Install all Brew Cask applications, then start all of them for the first time:
 - `https://raw.githubusercontent.com/pwalch/dotfiles/main/brew_cask_install.sh | bash`
 
-- Ukulele:
+- Ukelele:
   - mkdir `~/.keyboard-layouts`
   - File > Install > Show Organizer > Set Folder and select `~/.keyboard-layouts`
   - File > New From Current Input Source, then right-click on "Swiss French" and click "Set Keyboard Name and Script" and set name to `Swiss French pwalch`,
-  - double-click on `Swiss French pwalch`, then press OPT on physical keyboard and double click on "~" key square, go to "Terminator" tab and put the empty string, then to Make Output and put the "~" character (including the space to complete its constructions)
+  - double-click on `Swiss French pwalch`, then press OPT on physical keyboard and double click on `~` key square, go to "Terminator" tab and put the empty string, then to Make Output and put the `~` character (including the space to complete its constructions)
   - File > Save, select File Format "Keyboard Layout Bundle" and save as `~/.keyboard-layouts/swiss-french-pwalch.bundle`
   - drag'n'drop `swiss-french-pwalch` from Not Installed column to "Installed for All Users" column, then enter password and proceed
   - you will be asked to reboot, press ok, then reboot
