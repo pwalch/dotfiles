@@ -25,3 +25,5 @@ brew install awscli docker-credential-helper-ecr ipmitool mosh wget
 
 # Media
 brew install ffmpeg
+
+echo "Finished installing all brew applications"

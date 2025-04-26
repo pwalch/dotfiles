@@ -47,9 +47,9 @@ Desktop and dock
 - `Control Center > Battery`: Show Percentage
 
 Screen captures
-- `mkdir ~/workspace/screen-recordings ~/workspace/screen-recordings`
+- `mkdir ~/workspace/screenshots`
 - `Screenshot` app: go to `Options > Save to > Other location` > set to `~/workspace/screenshots`
-- `Quicktime > New Screen Recording > Options > Other location` > set to `~/workspace/screen-recordings`
+- `Quicktime > New Screen Recording > Options > Other location` > set to `~/workspace/screenshots`
 
 Finder
 - `Finder` app: go to `Settings > Advanced` and check `Show all filename extensions`
@@ -78,6 +78,8 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions && \
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting && \
   git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
+
+echo "Finished installing oh-my-zsh and extensions"
 ```
 
 Install Wezterm:
@@ -113,6 +115,17 @@ Apply chezmoi
 Install all Brew Cask applications, then start all of them for the first time:
 - `https://raw.githubusercontent.com/pwalch/dotfiles/main/brew_cask_install.sh | bash`
 
+Raycast
+- use `CMD-SPACE` as Raycast shortcut
+- `mkdir ~/.local/bin/raycast`
+- Extensions > Script Commands > Add Directories: add `~/.local/bin/raycast`
+- Extensions > Window Management
+  - enable `Left Half` and set it to CTRL-OPT-LEFT
+  - enable `Right Half` and set it to CTRL-OPT-RIGHT
+  - enable `Previous Display` and set it to CTRL-CMD-OPT-LEFT
+  - enable `Next Display` and set it to CTRL-CMD-OPT-RIGHT
+  - enable `Maximize` and set it to `CTRL-OPT-F`
+
 - Ukelele:
   - mkdir `~/.keyboard-layouts`
   - File > Install > Show Organizer > Set Folder and select `~/.keyboard-layouts`
@@ -124,8 +137,6 @@ Install all Brew Cask applications, then start all of them for the first time:
   - System Settings > Keyboard > Text Input > Input Sources > Edit > Press Plus, in "French", select `Swiss French pwalch`
   - on the top-right of the screen, select keyboard layout `Swiss French pwalch`
   - tilde should now type directly, without needing a space
-
-- Rectangle: start app and set up permissions, set shortcuts for left/right half, next/previous display and fullscreen, launch on login, hide menu bar icon
 - Flycut: start app and set up permissions, set shortcut to CMD + SHIFT + K, check `Move pasted item to top of stack`, `Privacy & Security > Privacy > Accessibility` add Flycut, launch on login by going to "Login Items" and adding "Flycut.app" (https://github.com/TermiT/Flycut/issues/206)
 - noTunes
   - start noTunes app and accept to open
@@ -155,11 +166,6 @@ Zoom
 - in `Video` check `Stop my video when joining`
 - in `PMI Settings` (appears when clicking on down-arrow next to `New Meeting` button), check `Waiting Room` and `Mute participants upon entry`
 - disable audio and video when starting a meeting
-
-Raycast
-- use `CMD-SPACE` as Raycast shortcut
-- `mkdir ~/.local/bin/raycast`
-- Extensions > Script Commands > Add Directories: add `~/.local/bin/raycast`
 
 VS Code:
 - in macOS System Settings, go to `Privacy & Security > Privacy > Full Disk Access` then add `VS Code`
